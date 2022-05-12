@@ -11,6 +11,7 @@ import Theatre from './components/pages/Theatre';
 import Kids from './components/pages/Kids';
 import Museums from './components/pages/Museums';
 import Films from './components/pages/Films';
+import Info from './components/pages/Info';
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/kids" element={<Kids />} />
           <Route exact path="/museums" element={<Museums />} />
           <Route exact path="/films" element={<Films />} />
+          <Route exact path="/support" element={<Info />} />
         </Routes>
         <Footer />
       </div>

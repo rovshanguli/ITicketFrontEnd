@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../../assets/sass/footer.scss'
 
 function Footer() {
@@ -11,7 +12,7 @@ function Footer() {
         </div>
         <div>
           <h4 className='call'>Dəstək Xidməti:</h4>
-          <h3 className='num heade'><a className='number' href="/">+994514555007</a></h3>
+          <h3 className='num heade'><Link className='number' to="/">+994514555007</Link></h3>
         </div>
 
       </div>
@@ -20,12 +21,12 @@ function Footer() {
         <div>
 
           <ul>
-            <li><a href="/">Ən Çox Verilən Suallar</a></li>
-            <li><a href="/">Dəstək</a></li>
-            <li><a href="/">Şərtlər Və Qaydalar</a></li>
-            <li><a href="/">Elektron Bilet</a></li>
-            <li><a href="/">Biletin Qaytarılması Və Ya Dəyişdirilməsi</a></li>
-            <li><a href="/">Məxfilik</a></li>
+            <li><Link to="/concerts">Ən Çox Verilən Suallar</Link></li>
+            <li><Link to="/support">Dəstək</Link></li>
+            <li><Link to="/">Şərtlər Və Qaydalar</Link></li>
+            <li><Link to="/">Elektron Bilet</Link></li>
+            <li><Link to="/">Biletin Qaytarılması Və Ya Dəyişdirilməsi</Link></li>
+            <li><Link to="/">Məxfilik</Link></li>
           </ul>
         </div>
 
@@ -35,10 +36,10 @@ function Footer() {
         <div>
 
           <ul>
-            <li><a href="/">Haqqımızda</a></li>
-            <li><a href="/">Məkanlar</a></li>
-            <li><a href="/">Biletlərin Satış Məntəqələri</a></li>
-            <li><a href="/">Əlaqə</a></li>
+            <li><Link to="/">Haqqımızda</Link></li>
+            <li><Link to="/">Məkanlar</Link></li>
+            <li><Link to="/">Biletlərin Satış Məntəqələri</Link></li>
+            <li><Link to="/">Əlaqə</Link></li>
           </ul>
         </div>
 

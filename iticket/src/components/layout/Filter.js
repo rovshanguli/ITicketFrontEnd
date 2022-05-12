@@ -68,8 +68,9 @@ function Filter() {
                     <div className='filter'>
                         <div className='price-range-view'>
                        
-                            <select   className="select">
-                                <option value="">
+                            <select  required>
+                                <option value="" disabled selected hidden>
+                                    Məkanı Seçin
                                 </option>
                                 <option>
                                     Heydər Əliyev Sarayı
