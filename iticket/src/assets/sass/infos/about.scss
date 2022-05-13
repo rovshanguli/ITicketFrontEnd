@@ -1,4 +1,4 @@
-.terms{
+.about{
     height: fit-content;
     --tw-bg-opacity: 1;
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -6,9 +6,15 @@
     border-radius: 20px;
     border: 1px solid #e5e5e5;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    .termstext{
+    .image{
+        .about-photo{
+            border-radius: 20px;
+        }
+    }
+    .abouttext{
         font-size: 23px;
         --tw-text-opacity: 1;
         color: rgba(107, 114, 128, var(--tw-text-opacity));
     }
+   
 }

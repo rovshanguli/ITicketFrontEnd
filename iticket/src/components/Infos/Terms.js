@@ -3,12 +3,34 @@ import '../../assets/sass/infos/terms.scss'
 
 function Terms() {
   return (
-    <div className='terms'>
-      <p className='termtext'>Tədbirin baş tutmasına 48 saat və ya daha çox müddət qaldıqda bilet geri qaytarılarsa və ya dəyişdirilərsə, bilet dəyərinin 30%-i tutulur.</p>
-      <p  className='termtext'>Tədbirin baş tutmasına 48 saat və ya daha az müddət qaldıqda bilet geri qaytarılmır və ya dəyişdirilmir.</p>
-      <p  className='termtext'>Şəhər kassalarından alınmış biletlər 28 Mall və Gənclik Mall ticarət mərkəzlərində yerləşən satış məntəqələrimizində dəyişdirilir və ya qaytarılır. Əlaqə telefonu: (+994) 12 493 33 77.</p>
-      <p  className='termtext'>iTicket.AZ veb-səhifəsindən alınmış elektron biletləri qaytarmaq və ya dəyişdirmək üçün +994 12 493 33 77 nömrəsi ilə əlaqə saxlaya bilərsiniz.</p>
+    <div>
+      <h2 className='mt-5'>Şərtlər Və Qaydalar</h2>
+      <div className='terms mt-5'>
+        <div>
+          <b className='termstext'>Ümumi qaydalar və şərtlər</b>
+          <p className='termstext'>iTicket.az veb-səhifəsindən istifadə etməklə siz aşağıdakı “Şərtlərə” və Azərbaycan Respublikasının qanunvericiliyi əsasında tənzimlənən bütün mövcud qanun və qaydalara riayət edəcəyinizi açıq şəkildə bildirirsiniz.  </p>
+        </div>
+        <div className='mt-4'>
+          <b className='termstext'>Ticarət nişanları</b>
+          <p className='termstext'>iTicket.az veb-səhifəsində olan loqotiplər iTicket.az veb-səhifəsinə məxsus qeydiyyatdan keçmiş əmtəə nişanlarıdır və heç bir halda iTicket.az şirkətinin qabaqcadan yazılı icazəsi olmadan istifadə edilə bilməz.</p>
+        </div>
+        <div className='mt-4'>
+          <b className='termstext'>Müəlliflik hüququ</b>
+          <p className='termstext'>Bu veb-səhifənin məzmunu və proqram təminatı iTicket.az şirkətinin mülkiyyəti hesab olunur və müəlliflik hüquqları ilə qorunur. Bu qayda və şərtlərin məhdud lisenziya təminatında açıq şəkildə ifadə olunanlar istisna olmaqla, yerdə qalan heç bir halda iTicket.az öz ticarət nişanları, müəlliflik hüquqları və ya digər özəl məlumatları ilə bağlı hər hansı zidd ifadə və ya nəzərdə tutulan hüquqa yol vermir.</p>
+        </div>
+
+        <div className='mt-4'>
+          <b className='termstext'>İcazə verilən istifadə</b>
+          <p className='termstext'>Sizə yalnız bu veb-səhifəsindəki səhifələrə baş çəkmək, onlara baxmaq və onların nüsxəsini öz şəxsi istifadəniz üçün saxlamaq hüququ verilir və siz şəxsi istifadə məqsədi ilə tədbirlərə və reklam xarakterli məlumata baxmaqdan, və ya şəxsi istifadəniz üçün biletləri almaqdan və ya iTicket.az tərəfindən xüsusilə nəzərdə tutulmuş şəxsi məqsəd üçün satmaqdan başqa, yerdə qalan digər heç bir halda hər hansı məqsədlə veb-səhifəsindəki materialın surətini çoxalda, yükləyə, dərc edə, dəyişdirə və ya digər bir şəkildə yaya bilməzsiniz.</p>
+        </div>
+        <div className='mt-4'>
+          <b className='termstext'>Qeyd: İcazəsiz bilet satışı, veb-səhifədəki hər hansı robot, hörümçək və ya digər avtomatlaşdırılmış cihazdan icazəsiz istifadə daxil olmaqla, və bundan savayı, veb-səhifəsində qanunsuz və/və ya icazəsiz istifadə araşdırılacaq və buna qarşı müvafiq qanuni tədbirlər görüləcəkdir.</b>
+        </div>
+
+
+      </div>
     </div>
+
   )
 }
 

@@ -24,7 +24,7 @@ function Filter() {
             // minDate: new  Date('11-05-2022'),
             disable: [
                 {
-                    from: "2022-05-15",
+                    from: "2022-05-10",
                     to: "2022-07-22"
                 },
                 // {
@@ -68,8 +68,8 @@ function Filter() {
                     <div className='filter'>
                         <div className='price-range-view'>
                        
-                            <select  required>
-                                <option value="" disabled selected hidden>
+                            <select defaultValue=""  >
+                                <option className='place'  value="" disabled hidden>
                                     Məkanı Seçin
                                 </option>
                                 <option>
