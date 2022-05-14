@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../assets/sass/poster.scss'
 
 function Poster() {
@@ -11,15 +12,15 @@ function Poster() {
                         iTicket.AZ tətbiqi bütün növ tədbirlərə (teatr, idman, konsertlər, sərgilər və s.) biletləri əldə etməyi asan və sürətli edir.
                     </div>
                     <div className="links">
-                        <a href="https://play.google.com/store/apps/details?id=az.iticket.iticket">
-                            <img alt='' src={require('../assets/img/android.png')} srcSet="images/android@2x.png 2x" /></a>
+                        <Link to={"/"}>
+                            <img alt='' src={require('../assets/img/android.png')} srcSet="images/android@2x.png 2x" /></Link>
                         <span></span>
-                        <a href="https://apps.apple.com/az/app/iticket-az/id1456260325">
-                            <img alt='' src={require('../assets/img/ios.png')} srcSet="images/ios@2x.png 2x" /></a>
+                        <Link to={"/"}>
+                            <img alt='' src={require('../assets/img/ios.png')} srcSet="images/ios@2x.png 2x" /></Link>
                     </div>
                     <div className='logo'>
-                        <a href="https://apps.apple.com/az/app/iticket-az/id1456260325">
-                            <img alt='' src={require('../assets/img/logoiticket.png')} srcSet="images/ios@2x.png 2x" /></a>
+                        <Link to={"/"}>
+                            <img alt='' className='logos' src={require('../assets/img/logoiticket.png')} srcSet="images/ios@2x.png 2x" /></Link>
                     </div>
                 </div>
                     <div className="hidden  d-none d-lg-block lg:block lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 lg:overflow-hidden lg:rounded-2xl">
@@ -27,7 +28,7 @@ function Poster() {
                             İNDİ YÜKLƏ İNDİ YÜKLƏ İNDİ YÜKLƏ İNDİ YÜKLƏ İNDİ YÜKLƏ
                         </div>
                     </div>
-                    <img alt='' src={require('../assets/img/app.png')} srcSet="images/app@2x.png 2x" className="hidden lg:block app-photo d-none d-lg-block" />
+                    <img alt=''  src={require('../assets/img/app.png')} srcSet="images/app@2x.png 2x" className="hidden lg:block app-photo d-none d-lg-block" />
                 </div>
             </div>
         </div>

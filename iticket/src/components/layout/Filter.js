@@ -17,21 +17,21 @@ function Filter() {
 
     const options = {
         datetime: {
-            // maxDate:new Date('01-07-2022') ,
+             maxDate:new Date(2022, 7, 22) ,
             mode: 'range',
             altInputClass: 'hide',
             dateFormat: 'M d Y',
-            // minDate: new  Date('11-05-2022'),
-            disable: [
-                {
-                    from: "2022-05-10",
-                    to: "2022-07-22"
-                },
-                // {
-                //     from: "2025-09-01",
-                //     to: "2025-12-01"
-                // }
-            ],
+             minDate: new Date(2022, 5, 13),
+            // disable: [
+            //     {
+            //         from: "2022-05-10",
+            //         to: "2022-07-22"
+            //     },
+            //     {
+            //         from: "2025-09-01",
+            //         to: "2025-12-01"
+            //     }
+            // ],
 
             // THIS `wrap` option is required when using external elements!
             // https://flatpickr.js.org/examples/#flatpickr-external-elements

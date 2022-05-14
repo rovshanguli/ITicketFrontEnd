@@ -8,7 +8,7 @@ function About() {
       <div className='about mt-5'>
 
         <div className='about-title'>
-          <img src={require('../../assets/img/info/about-title.png')} alt="about-title" />
+          <img className='abouttitle' src={require('../../assets/img/info/about-title.png')} alt="about-title" />
         </div>
         <div className='image mt-4'>
           <img className='about-photo' src={require('../../assets/img/info/theatre.jpg')} alt="about-title" />

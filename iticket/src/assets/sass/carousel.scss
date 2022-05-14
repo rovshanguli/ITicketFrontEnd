@@ -214,14 +214,14 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
 
   .image-gallery-slide .image-gallery-image {
     // max-height: calc(100vh - 80px); // 80 px for the thumbnail space
-    height:95vh !important;
+    height:100vh ;
     object-fit: none !important;
   }
 
   &.left,
   &.right {
     .image-gallery-slide .image-gallery-image {
-      max-height: 100vh;
+      height: 100vh ;
     
     }
   }
@@ -265,6 +265,7 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
   .image-gallery-image {
     width: 100vw;
     height: auto;
+    
     padding-left: 0.7rem;
     padding-right: 0.7rem;
    border-radius: 3%;

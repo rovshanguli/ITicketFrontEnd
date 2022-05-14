@@ -8,7 +8,7 @@ function Footer() {
     <div className='foot row mt-4'>
       <div className='col-lg-3 col-md-6 col-sm-12 mt-5'>
         <div className='logo mt-2'>
-          <img src={require('../../assets/img/logoiticket.png')} alt="" />
+          <img className='logofoot' src={require('../../assets/img/logoiticket.png')} alt="" />
         </div>
         <div>
           <h4 className='call'>Dəstək Xidməti:</h4>

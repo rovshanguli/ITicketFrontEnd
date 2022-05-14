@@ -109,7 +109,7 @@ function InnovationsSlider() {
 
                     <Slider {...settings}>
                         {cards.map(card =>
-                            <div key={card.toString()}>
+                            <div className='px-3' key={card.toString()}>
                                 <a href="/events/concerts/sagopa-kajmer" className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                                     <div className="relative h-full">
                                         <div className="image">
