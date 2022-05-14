@@ -3,7 +3,7 @@ import Slider from 'react-slick/lib/slider';
 
 // import Slider from 'react-slick/lib/slider';
 
-import '../../assets/sass/concertsslider.scss'
+import '../../assets/sass/sliders/concertsslider.scss'
 
 function ConcertsSlider() {
     const cards = [

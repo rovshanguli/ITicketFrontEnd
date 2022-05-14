@@ -1,7 +1,7 @@
 import React from 'react'
 import ImageGallery from 'react-image-gallery';
 
-import '../../assets/sass/carousel.scss'
+import '../../assets/sass/sliders/carousel.scss'
 
 function Carousel() {
     const images = [

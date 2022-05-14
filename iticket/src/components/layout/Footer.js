@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../../assets/sass/footer.scss'
+import '../../assets/sass/layout/footer.scss'
 
 function Footer() {
   return (
@@ -21,12 +21,12 @@ function Footer() {
         <div>
 
           <ul>
-            <li><Link to="/concerts">Ən Çox Verilən Suallar</Link></li>
+            <li><Link to="/faq">Ən Çox Verilən Suallar</Link></li>
             <li><Link to="/support">Dəstək</Link></li>
-            <li><Link to="/">Şərtlər Və Qaydalar</Link></li>
-            <li><Link to="/">Elektron Bilet</Link></li>
-            <li><Link to="/">Biletin Qaytarılması Və Ya Dəyişdirilməsi</Link></li>
-            <li><Link to="/">Məxfilik</Link></li>
+            <li><Link to="/terms">Şərtlər Və Qaydalar</Link></li>
+            <li><Link to="/eticket">Elektron Bilet</Link></li>
+            <li><Link to="/refund">Biletin Qaytarılması Və Ya Dəyişdirilməsi</Link></li>
+            <li><Link to="/privacy">Məxfilik</Link></li>
           </ul>
         </div>
 
@@ -36,10 +36,9 @@ function Footer() {
         <div>
 
           <ul>
-            <li><Link to="/">Haqqımızda</Link></li>
-            <li><Link to="/">Məkanlar</Link></li>
-            <li><Link to="/">Biletlərin Satış Məntəqələri</Link></li>
-            <li><Link to="/">Əlaqə</Link></li>
+            <li><Link to="/about">Haqqımızda</Link></li>
+          
+            <li><Link to="/contact">Əlaqə</Link></li>
           </ul>
         </div>
 

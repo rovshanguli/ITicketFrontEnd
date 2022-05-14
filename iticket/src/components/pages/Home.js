@@ -2,7 +2,7 @@
 
 import React from 'react'
 // import Slider from '../Slider'
-import '../../assets/sass/home.scss'
+
 import ConcertsSlider from '../sliders/ConcertsSlider'
 import InnovationsSlider from '../sliders/InnovationsSlider'
 import KidsSlider from '../sliders/KidsSlider'

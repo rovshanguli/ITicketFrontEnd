@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../assets/sass/poster.scss'
+import '../assets/sass/postercomponent/poster.scss'
 
 function Poster() {
     return (

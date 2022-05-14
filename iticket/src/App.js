@@ -11,7 +11,15 @@ import Theatre from './components/pages/Theatre';
 import Kids from './components/pages/Kids';
 import Museums from './components/pages/Museums';
 import Films from './components/pages/Films';
-import Info from './components/pages/Info';
+
+import About from './components/Infos/About';
+import Contacts from './components/Infos/Contacts';
+import ETicket from './components/Infos/ETicket';
+import Faq from './components/Infos/Faq';
+import Privacy from './components/Infos/Privacy';
+import Refund from './components/Infos/Refund';
+import Support from './components/Infos/Support';
+import Terms from './components/Infos/Terms';
 
 
 
@@ -31,7 +39,15 @@ function App() {
           <Route exact path="/kids" element={<Kids />} />
           <Route exact path="/museums" element={<Museums />} />
           <Route exact path="/films" element={<Films />} />
-          <Route exact path="/support" element={<Info />} />
+          {/* <Route exact path="/support" element={<Info />} /> */}
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/contact" element={<Contacts />} />
+          <Route exact path="/eticket" element={<ETicket />} />
+          <Route exact path="/faq" element={<Faq />} />
+          <Route exact path="/privacy" element={<Privacy />} />
+          <Route exact path="/refund" element={<Refund />} />
+          <Route exact path="/support" element={<Support />} />
+          <Route exact path="/terms" element={<Terms />} />
         </Routes>
         <Footer />
       </div>

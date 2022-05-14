@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Slider from 'react-slick/lib/slider';
-import '../../assets/sass/innovationsslider.scss'
+import '../../assets/sass/sliders/innovationsslider.scss'
 
 function InnovationsSlider() {
 

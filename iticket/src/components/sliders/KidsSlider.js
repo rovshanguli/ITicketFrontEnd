@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Slider from 'react-slick/lib/slider';
-import '../../assets/sass/kidsslider.scss'
+import '../../assets/sass/sliders/kidsslider.scss'
 
 function KidsSlider() {
 

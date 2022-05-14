@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../assets/sass/header.scss'
+
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Autocomplete, TextField } from '@mui/material';
+import '../../assets/sass/layout/header.scss'
 
 
 
