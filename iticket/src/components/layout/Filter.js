@@ -94,12 +94,6 @@ function Filter() {
                                     Akademik Rus Dram Teatrı
                                 </option>
                                 <option>
-                                    Bakı Musiqi Akademiyası nəzdində Opera Studiyasının Konsert salonu
-                                </option>
-                                <option>
-                                    Azərbaycan Dövlət Akademik Opera və Balet Teatrı
-                                </option>
-                                <option>
                                     Rəşid Behbudov adına Dövlət Mahnı Teatrı
                                 </option>
                                 <option>
@@ -137,9 +131,6 @@ function Filter() {
                                 </option>
                                 <option>
                                     Azərbaycan İstiqlal Muzeyi
-                                </option>
-                                <option>
-                                    Azərbaycan Musiqi Mədəniyyəti Dövlət Muzeyi
                                 </option>
                                 <option>
                                     Üzeyir Hacıbəylinin ev-muzeyi
@@ -217,6 +208,8 @@ function Filter() {
                                     Bakı Kristal Zalı və Dənizkənarı Bulvar
                                 </option>
                             </select>
+
+                            
                         </div>
 
                     </div>
