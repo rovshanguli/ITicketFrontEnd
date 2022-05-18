@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Slider from 'react-slick/lib/slider';
 import '../../assets/sass/sliders/innovationsslider.scss'
@@ -110,7 +111,7 @@ function InnovationsSlider() {
                     <Slider {...settings}>
                         {cards.map(card =>
                             <div className='px-3' key={card.toString()}>
-                                <a href="/events/concerts/sagopa-kajmer" className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+                                <Link to="/detail" className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                                     <div className="relative h-full">
                                         <div className="image">
                                             <img src={`${card.bgimg}`} data-src="https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg" alt="SAGOPA KAJMER" className="bg ls-is-cached lazyloaded" />
@@ -134,7 +135,7 @@ function InnovationsSlider() {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         )}
 

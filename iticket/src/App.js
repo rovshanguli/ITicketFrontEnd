@@ -11,7 +11,6 @@ import Theatre from './components/pages/Theatre';
 import Kids from './components/pages/Kids';
 import Museums from './components/pages/Museums';
 import Films from './components/pages/Films';
-
 import About from './components/Infos/About';
 import Contacts from './components/Infos/Contacts';
 import ETicket from './components/Infos/ETicket';
@@ -20,6 +19,7 @@ import Privacy from './components/Infos/Privacy';
 import Refund from './components/Infos/Refund';
 import Support from './components/Infos/Support';
 import Terms from './components/Infos/Terms';
+import Detail from './components/detail/Detail';
 
 
 
@@ -48,6 +48,7 @@ function App() {
           <Route exact path="/refund" element={<Refund />} />
           <Route exact path="/support" element={<Support />} />
           <Route exact path="/terms" element={<Terms />} />
+          <Route exact path="/detail" element={<Detail />} />
         </Routes>
         <Footer />
       </div>
