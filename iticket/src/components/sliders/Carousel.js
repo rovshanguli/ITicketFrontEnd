@@ -21,12 +21,12 @@ function Carousel() {
   const [images, setImage] = useState([]);
 
   useEffect(() => {
-    loadOrders();
+    loadSliders();
 
   }, []);
 
-  const loadOrders = async () => {
-    debugger
+  const loadSliders = async () => {
+    
     const result = await axios.get("https://localhost:44351/api/Slider/GetAll");
     setImage(result.data);
 
