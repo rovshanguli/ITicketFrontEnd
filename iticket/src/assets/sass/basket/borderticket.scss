@@ -1,0 +1,98 @@
+.ticketsonline {
+  display: flex;
+  justify-content: space-between;
+  .war {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 15px;
+    height: 125px;
+
+    .ticket {
+      display: flex;
+      padding: 15px;
+      margin-top: 15px;
+      justify-content: space-between;
+      // margin-left: 15px;
+      .tickdeta {
+        display: flex;
+        .spans {
+          margin-left: 15px;
+          top: 15px;
+
+          font-size: 0.975rem;
+          line-height: 1.25rem;
+          --tw-text-opacity: 1;
+          color: rgba(107, 114, 128, var(--tw-text-opacity));
+        }
+        .tickname {
+          margin-top: 15px;
+          margin-left: 15px;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          font-weight: 500;
+        }
+        .seattick {
+          margin-left: 15px;
+          margin-top: 15px;
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.25;
+          color: rgba(107, 114, 128, var(--tw-text-opacity));
+        }
+        .imagetick {
+          width: 100px;
+          height: 100px;
+
+          .tickimage {
+            width: 100%;
+            border-radius: 10px;
+          }
+        }
+      }
+      .tickbuttons {
+        display: flex;
+        padding: 15px;
+        .tickbuton {
+          flex: 1 1 0%;
+          margin-right: 15px;
+          width: 105px;
+          height: 66px;
+          border-radius: 0.75rem;
+          --tw-bg-opacity: 1;
+          background-color: rgba(255, 221, 0, var(--tw-bg-opacity));
+
+          padding: 1rem;
+          text-align: center;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          font-weight: 500;
+        }
+        .delet {
+          background-color: #ff8787;
+          margin-top: 15px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  .waro {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 15px;
+    padding: 15px;
+    height: auto;
+    .tickord{
+        width: 100%;
+        // display: flex;
+     align-items: center !important;
+    border: none;
+    text-align: center !important;
+    
+    border-radius: 0.5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255,221,0,var(--tw-bg-opacity));
+    }
+  }
+}

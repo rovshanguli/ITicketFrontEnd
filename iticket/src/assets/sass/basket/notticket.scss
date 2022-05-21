@@ -1,0 +1,18 @@
+.war{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 15px;
+    .warning{
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        padding-left: 2.5rem;
+        font-weight: 600;
+        background: url(https://iticket.az/images/warning.svg) no-repeat 0 50%;
+        background-size: 30px 45px;
+     
+       
+        .notticket{
+            font-size: 20px;
+            margin-top: 15px;
+        }
+    }
+}
