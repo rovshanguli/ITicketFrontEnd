@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import Slider from 'react-slick/lib/slider';
-import '../../assets/sass/sliders/innovationsslider.scss'
+import '../../assets/sass/sliders/innovationsslider.scss';
 
 function InnovationsSlider() {
 
@@ -40,7 +40,7 @@ function InnovationsSlider() {
             hall: "Elektra Events Hall"
         },
         {
-            
+
             bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
             img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
             price: "5",
@@ -49,7 +49,7 @@ function InnovationsSlider() {
             hall: "Elektra Events Hall"
         },
         {
-            
+
             bgimg: "https://cdn.iticket.az/event/poster_bg/hM2SYe16SbKWyutMq3rS2pgc5F8UIo6p3rQtaN0w.jpg",
             img: "https://cdn.iticket.az/event/poster/T2YvJQuPaX6wtcUSh83mvzVlaITkqUdNGs4vPCcR.png",
             price: "5",
@@ -57,9 +57,37 @@ function InnovationsSlider() {
             date: "10 iyun 2022",
             hall: "Elektra Events Hall"
         }
-
-       
     ]
+
+
+    const [images, setImage] = useState([]);
+
+    useEffect(() => {
+        loadOrders();
+
+    }, []);
+
+    const loadOrders = async () => {
+
+        const result = await axios.get("https://localhost:44351/api/Slider/GetAll");
+        setImage(result.data);
+
+    }
+
+
+    let fullImgs = [];
+    images.forEach(image => {
+
+        let data = "data:image/jpeg;base64,";
+        let fullImg = data + image.image;
+        var obj = {
+            original: fullImg,
+            thumbnail: fullImg
+
+        }
+
+        fullImgs.push(obj)
+    });
     var settings = {
         dots: true,
         infinite: true,

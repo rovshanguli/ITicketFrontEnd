@@ -23,6 +23,8 @@ import Terms from './components/Infos/Terms';
 import Detail from './components/detail/Detail';
 import Basket from './components/pages/basketpage/Basket';
 import Profile from './components/pages/profile/Profile';
+import MyOrders from './components/pages/profile/profileComponent/MyOrders';
+import UpdatePassword from './components/pages/profile/profileComponent/UpdatePassword';
 
 
 
@@ -54,6 +56,8 @@ function App() {
           <Route exact path="/detail" element={<Detail />} />
           <Route exact path="/basket" element={<Basket />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/myorders" element={<MyOrders />} />
+          <Route exact path="/updatepassword" element={<UpdatePassword />} />
         </Routes>
         <Footer />
       </div>
