@@ -117,7 +117,7 @@ function Header() {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/allevents">Bütün Tədbirlər</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/allevents">Tədbirlər</NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/concerts">Konsertlər</NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/theatre"> Tamaşalar</NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/kids">Uşaqlar</NavLink>

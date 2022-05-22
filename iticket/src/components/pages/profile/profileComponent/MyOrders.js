@@ -8,25 +8,31 @@ function MyOrders() {
             <div className='col-lg-8 col-md-9 col-sm-12  mt-4'>
                 <h2 className='mt-5'>Sifarişlər</h2>
                 <div className='orders mt-5'>
-
-                    <div className='mt-4 ordermenu'>
-                        <div><b>Rovshan və Ümiddinyonun əsərləri</b></div>
-                        <div><b>ləğv edilib</b></div>
-                        <div><p>datetime</p></div>
-                        <div><b>price ₼</b></div>
+                    <Link className='orderlink' to={'/order'}>
+                        <div className='mt-4 ordermenu'>
 
 
-
-                    </div>
-                    <div className='mt-4 ordermenu'>
-                        <div><b>Event Name</b></div>
-                        <div><b>Status</b></div>
-                        <div><p>datetime</p></div>
-                        <div><b>price ₼</b></div>
+                            <div className='ordertitle'><b>Rovshan və Ümiddinyonun əsərləri</b></div>
+                            <div className='orderstatus'><b>ləğv edilib</b></div>
+                            <div className='orderdate'><p>datetime</p></div>
+                            <div className='orderprice'><b>price ₼</b></div>
 
 
+                        </div>
+                    </Link>
 
-                    </div>
+                    <Link className='orderlink' to={'/order'}>
+                        <div className='mt-4 ordermenu'>
+
+
+                            <div><b>Rovshan və Ümiddinyonun əsərləri</b></div>
+                            <div><b>ləğv edilib</b></div>
+                            <div><p>datetime</p></div>
+                            <div><b>price ₼</b></div>
+
+
+                        </div>
+                    </Link>
 
 
 

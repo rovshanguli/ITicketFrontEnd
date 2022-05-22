@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import '../../../../assets/sass/basket/borderticket.scss'
 
 function BorderTicket() {
@@ -65,10 +66,12 @@ function BorderTicket() {
                                     <Form.Check type="checkbox" label=" Şərtləri və qaydaları qəbul edirəm." />
                                 </Form.Group>
 
-
-                                <Button className='tickord' type="submit">
+                           
+                                <Button  className='tickord' type="submit">
                                     Sifariş Yarat
                                 </Button>
+                            
+                               
                             </Form>
                         </div>
 

@@ -7,17 +7,32 @@
   border-radius: 20px;
   border: 1px solid #e5e5e5;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  .ordermenu {
+
+  .orderlink{
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(107,114,128,var(--tw-text-opacity));
     display: flex;
-    justify-content: space-between;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    height: fit-content;
-    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
-    --tw-bg-opacity: 1;
-    padding: 2.75rem;
-    border-radius: 20px;
-    border: 1px solid #e5e5e5;
+   
+    .ordermenu {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      height: fit-content;
+      background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+      --tw-bg-opacity: 1;
+      padding: 2.75rem;
+      border-radius: 20px;
+      border: 1px solid #e5e5e5;
+      
+    }
   }
+
 }
 
 .ordersidebar {

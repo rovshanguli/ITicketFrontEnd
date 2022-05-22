@@ -25,6 +25,7 @@ import Basket from './components/pages/basketpage/Basket';
 import Profile from './components/pages/profile/Profile';
 import MyOrders from './components/pages/profile/profileComponent/MyOrders';
 import UpdatePassword from './components/pages/profile/profileComponent/UpdatePassword';
+import Order from './components/pages/basketpage/basketcomponent/Order';
 
 
 
@@ -58,6 +59,7 @@ function App() {
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/myorders" element={<MyOrders />} />
           <Route exact path="/updatepassword" element={<UpdatePassword />} />
+          <Route exact path="/order" element={<Order />} />
         </Routes>
         <Footer />
       </div>
