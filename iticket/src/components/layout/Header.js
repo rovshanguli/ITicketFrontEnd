@@ -104,7 +104,7 @@ function Header() {
 
   return (
     <div >
-      <div className='container-xxl' >
+      <div className='' >
 
         <Navbar expand="lg">
           <Container fluid>
@@ -117,12 +117,12 @@ function Header() {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/allevents">Tədbirlər</NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/concerts">Konsertlər</NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/theatre"> Tamaşalar</NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/kids">Uşaqlar</NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/museums">Muzeylər</NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/films">Filmlər</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/allevents">Tədbirlər</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/concerts">Konsertlər</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/theatre"> Tamaşalar</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/kids">Uşaqlar</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/museums">Muzeylər</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/films">Filmlər</NavLink>
               </Nav>
               <div className="basket d-flex justify-content-end">
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/"><i className="far fa-heart"></i></NavLink>
@@ -192,12 +192,12 @@ function Header() {
                       <Form.Control type="email" placeholder="Enter email" />
 
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-5" controlId="formBasicPassword">
+                    <Form.Group className="mb-3 mt-3" controlId="formBasicPassword">
 
                       <Form.Control outline="yellow" type="password" placeholder="Password" />
                     </Form.Group>
                     <Button className='login' onClick={handleForgotOpen}>Unutmusunuz?</Button>
-                    <Button className="warning login" size="sm" type="submit"> Daxil Ol</Button>{' '}
+                    <Button className="warning login mt-3" size="sm" type="submit"> Daxil Ol</Button>{' '}
 
                   </Form>
                   <p className='mt-5'>İTicket'də yenisiz?</p>

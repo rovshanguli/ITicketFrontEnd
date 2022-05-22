@@ -1,46 +1,70 @@
-.logofoot{
+.logofoot {
     width: 130px;
 }
-.call{
-    color: inherit;
+
+.call {
+    color: rgba(0, 0, 0, 0.55);
     margin-top: 25px;
 }
-.num{
+
+.num {
     margin-top: 25px;
 }
-.heade{
-    color: black;
+
+.heade {
+    color: rgba(0, 0, 0, 0.55);
 }
-.number{
+.visa{
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.number {
     text-decoration: none;
-    color: black;
-   
+    color: rgba(0, 0, 0, 0.55);
+    
+
 }
-.foot{
+
+.number:hover {
+    color: #92B4EC
+}
+
+.foot {
     display: flex;
     margin-left: auto;
     margin-right: auto;
 }
-.foot{
+
+.foot {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
 }
-.visalog{
+
+.visalog {
     width: 50%;
 }
-ul{
-   margin: 0;
-   padding: 0;
-    li{
-       margin-top: 15px;
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+        margin-top: 15px;
         list-style-type: none;
-        a{
+
+        a {
             text-decoration: none;
-            color: inherit;
+            color: rgba(0, 0, 0, 0.55);
+        }
+
+        a:hover {
+            color: #92B4EC
         }
     }
 }
-.mmc{
+
+.mmc {
     font-size: 20px;
     margin-top: 25px;
+    color: rgba(0, 0, 0, 0.55);
 }

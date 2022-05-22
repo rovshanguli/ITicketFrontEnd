@@ -47,7 +47,7 @@ function Footer() {
         <h3 className='heade'>Təhlükəsizlik</h3>
         <div>
 
-          <p>Bütün ödənişlər Visa, Visa Electron, Maestro və MasterCard-dan 3D Secure ilə qorunur.</p>
+          <p className='visa'>Bütün ödənişlər Visa, Visa Electron, Maestro və MasterCard-dan 3D Secure ilə qorunur.</p>
           <img className='visalog' src={require('../../assets/img/visalog.png')} alt="" />
         </div>
 
