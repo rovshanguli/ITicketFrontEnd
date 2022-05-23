@@ -1,9 +1,8 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Autocomplete, TextField } from '@mui/material';
@@ -77,6 +76,41 @@ function Header() {
     { title: 'Seven Samurai', year: 1954 },
   ]
 
+  //Prop for api start
+  const [name, setName] = useState();
+  const [surname, setSurname] = useState();
+  const [number, setNumber] = useState();
+  const [mail, setMail] = useState();
+  const [password, setPassword] = useState();
+  console.log(password);
+  //Prop for Api End
+
+
+  async function register(e) {
+    debugger
+    e.preventDefault();
+    await axios.post('/api/account/register', {
+
+      Email:mail,
+      Password:password,
+      Name:name,
+      Surname:surname,
+      PhoneNumber:number,
+      UserName:name
+      
+
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+
+      })
+      .catch(function (error) {
+        
+
+      });
+
+
+
+  }
 
 
 
@@ -94,7 +128,7 @@ function Header() {
   const [loginOpen, setLoginOpen] = React.useState(false);
   const handleLoginOpen = () => setLoginOpen(true);
   const [registerOpen, setRegisterOpen] = React.useState(false);
-  const handleRegisterOpen = () =>{
+  const handleRegisterOpen = () => {
     setRegisterOpen(true)
     setLoginOpen(false)
   }
@@ -218,9 +252,9 @@ function Header() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            
+
             <Box sx={style.forgotstyle} className='overflow-hidden'>
-              
+
               <div className='modal-size'>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   <span className='yellow'></span>
@@ -257,33 +291,29 @@ function Header() {
                   Register
                 </Typography>
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
-                  <Form>
+                  <Form onSubmit={(e) => register(e)}>
+
                     <Form.Group className="mb-3 mt-4" controlId="formBasicName">
-
-                      <Form.Control type="text" placeholder="Ad" />
-
+                      <Form.Control type="text" onChange={(e) => setName(e.target.value)} placeholder="Ad" />
                     </Form.Group>
+
                     <Form.Group className="mb-3 mt-4" controlId="formBasicSurname">
-
-                      <Form.Control type="text" placeholder="Soy Ad" />
-
+                      <Form.Control type="text" placeholder="Soy Ad" onChange={(e) => setSurname(e.target.value)} />
                     </Form.Group>
+
                     <Form.Group className="mb-3 mt-4" controlId="formBasicMobilr">
-
-                      <Form.Control type="string" placeholder="Mobile" />
-
+                      <Form.Control type="string" placeholder="Mobile" onChange={(e) => setNumber(e.target.value)} />
                     </Form.Group>
+
                     <Form.Group className="mb-3 mt-4" controlId="formBasicRegistEmail">
-
-                      <Form.Control type="email" placeholder="Enter email" />
-
+                      <Form.Control type="email" placeholder="Enter email" onChange={(e) => setMail(e.target.value)} />
                     </Form.Group>
+
                     <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
-
-                      <Form.Control outline="yellow" type="password" placeholder="Password" />
+                      <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicConfiPassword">
 
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicConfiPassword">
                       <Form.Control outline="yellow" type="password" placeholder="Confirm Password" />
                     </Form.Group>
 

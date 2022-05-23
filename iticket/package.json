@@ -2,6 +2,7 @@
   "name": "iticket",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://localhost:44351",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@brainhubeu/react-carousel": "^2.0.4",
