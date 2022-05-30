@@ -6,20 +6,23 @@ import { Link } from 'react-router-dom';
 
 
 function Concerts() {
-    const [Items, setItems] = useState([]);
+    const [items, setItems] = useState([]);
     const [visible, setVisible] = useState(3);
+    const [hallid,setHallId] = useState();
+    const [date,setDate] = useState();
+    const [price, setPrice] = useState([0, 100]);
+    
+
+    
 
     const showMoreItems = () => {
         setVisible((prevValue) => prevValue + 3)
     }
-
     useEffect(() => {
         loadDatas();
-
     }, []);
 
     const loadDatas = async () => {
-
         const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
         setItems(result.data)
     }
@@ -28,15 +31,18 @@ function Concerts() {
         console.log(id);
     }
 
+    const result = items.filter(event => event.price > price[0]);
+
+
     return (
         <div className='container'>
             <h3 className='mt-5'>Konsertlər</h3>
             <div className='mt-5'>
-                <Filter />
+                <Filter hallId={setHallId} date={setDate} setPrice={setPrice} getPrice={price}/>
             </div>
             <div className='row '>
-                {Items.slice(0, visible).map(card =>
-                    <div className="col-4 mb-3">
+                {result.slice(0, visible).map(card =>
+                    <div className="col-4 mb-3" key={card.id}>
                         <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                             <div className="relative h-full">
                                 <div className="image">

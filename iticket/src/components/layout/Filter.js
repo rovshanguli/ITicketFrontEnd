@@ -1,6 +1,4 @@
-import React from 'react';
-// import TextField from '@mui/material/TextField';
-// import Autocomplete from '@mui/material/Autocomplete';
+import React,{useState} from 'react';
 import '../../assets/sass/layout/filter.scss';
 import "flatpickr/dist/themes/material_green.css";
 import Flatpickr from "react-flatpickr";
@@ -12,51 +10,36 @@ import Slider from '@mui/material/Slider';
 
 
 
-function Filter() {
+function Filter(props) {
 
 
+    //Date Filter 
     const options = {
         datetime: {
-             maxDate:new Date(2022, 7, 22) ,
+            maxDate:new Date(2022, 7, 22) ,
             mode: 'range',
             altInputClass: 'hide',
             dateFormat: 'M d Y',
-             minDate: new Date(2022, 5, 13),
-            // disable: [
-            //     {
-            //         from: "2022-05-10",
-            //         to: "2022-07-22"
-            //     },
-            //     {
-            //         from: "2025-09-01",
-            //         to: "2025-12-01"
-            //     }
-            // ],
-
-            // THIS `wrap` option is required when using external elements!
-            // https://flatpickr.js.org/examples/#flatpickr-external-elements
+            minDate: new Date(2022, 5, 13),
             wrap: true,
         },
-
-
     }
+    
+
+    //Price Filter
     function valuetext(value) {
-        return `${value}°C`;
+        return value;
     }
-
     const minDistance = 10;
-
-    const [value1, setValue1] = React.useState([20, 37]);
-
-    const handleChange1 = (event, newValue, activeThumb) => {
+    const handleChange = (event, newValue, activeThumb) => {
         if (!Array.isArray(newValue)) {
             return;
         }
 
         if (activeThumb === 0) {
-            setValue1([Math.min(newValue[0], value1[1] - minDistance), value1[1]]);
+            props.setPrice([Math.min(newValue[0], props.getPrice[1] - minDistance), props.getPrice[1]]);
         } else {
-            setValue1([value1[0], Math.max(newValue[1], value1[0] + minDistance)]);
+            props.setPrice([props.getPrice[0], Math.max(newValue[1], props.getPrice[0] + minDistance)]);
         }
     };
 
@@ -68,11 +51,11 @@ function Filter() {
                     <div className='filter'>
                         <div className='price-range-view'>
                        
-                            <select defaultValue=""  >
+                            <select defaultValue="" onChange={(e) => props.hallId(e.target.value)} >
                                 <option className='place'  value="" disabled hidden>
                                     Məkanı Seçin
                                 </option>
-                                <option>
+                                <option value={'1'}>
                                     Heydər Əliyev Sarayı
                                 </option>
                                 <option>
@@ -220,6 +203,7 @@ function Filter() {
                         <Flatpickr
                             data-input
                             options={options.datetime}
+                            onSelect={(e) => props.date(e.target.value)}
                         >
                             {/* Button and input should be the children of flatpickr * /}
                              {/* as per the official flatpickr.js example above */}
@@ -234,13 +218,12 @@ function Filter() {
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className='filter'>
-                        <div className='price-range-view'> Qiymət {value1[0]} ₼-dan {value1[1]} ₼-dək</div>
-
+                        <div className='price-range-view'> Qiymət {props.getPrice[0]} ₼-dan {props.getPrice[1]} ₼-dək</div>
                         <Box sx={{ width: '100%' }}>
                             <Slider
                                 getAriaLabel={() => 'Minimum distance'}
-                                value={value1}
-                                onChange={handleChange1}
+                                value={props.getPrice}
+                                onChange={handleChange}
                                 valueLabelDisplay="auto"
                                 getAriaValueText={valuetext}
                                 disableSwap

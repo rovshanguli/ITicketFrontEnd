@@ -15,7 +15,6 @@ function AllEvents() {
 
   useEffect(() => {
     loadDatas();
-
   }, []);
 
   const loadDatas = async () => {

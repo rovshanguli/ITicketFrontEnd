@@ -9,7 +9,7 @@ import '../../assets/sass/details/detail.scss'
 function Detail(props) {
     const { id } = useParams();
 
-    const [detailimg, setDetailimg]= useState();
+    const [detailimg, setDetailimg] = useState();
     function initPromise() {
 
         const response = axios.get(`/api/Event/GetById/${id}`)
@@ -20,27 +20,38 @@ function Detail(props) {
 
 
 
+
     useEffect(() => {
         initPromise()
-          .then(function (result) {
-            // "initResolve"
-            return result.data;
-          })
-          .then(function (result) {
-       setDetailimg(result.detailimage)
-    
-          });
-      });
+            .then(function (result) {
+                // "initResolve"
+                return result.data;
+            })
+            .then(function (result) {
+                setDetailimg(result.detailimage)
+
+            });
+    });
 
     const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
+
+    var chart;
+    function printSelectedObjects() {
+        chart.listSelectedObjects(
+            selectedObjects => console.table(selectedObjects)
+        );
+    }
+
+
+
     return (
         <div>
             <div className='event-image'>
                 {/* <img className='imag' src="https://cdn.iticket.az/event/cover/XHVymjWZKrh7pMeNgCy7cqmukHya71ubiNkMhOeD.jpg" alt="" /> */}
-                <img className='imag'     src={`data:image/jpeg;base64,${detailimg}`}  alt="" />
+                <img className='imag' src={`data:image/jpeg;base64,${detailimg}`} alt="" />
             </div>
 
             <div className='container'>
@@ -139,7 +150,14 @@ function Detail(props) {
                     region="eu"
                     language="en"
                 />
+
+
             </div>
+            <button onClick={() => printSelectedObjects(
+                
+            )}>
+                Print Selected Seats to console
+            </button>
         </div>
 
     )
