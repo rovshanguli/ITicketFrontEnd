@@ -20,7 +20,7 @@ function Filter(props) {
             mode: 'range',
             altInputClass: 'hide',
             dateFormat: 'M d Y',
-            minDate: new Date(2022, 5, 13),
+            minDate: Date.now(),
             wrap: true,
         },
     }

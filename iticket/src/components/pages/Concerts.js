@@ -33,7 +33,7 @@ function Concerts() {
         console.log(id);
     }
 
-    const result = items.filter(event => event.price >= price[0] && event.price <= price[1] &&  moment(startAndEnd[1]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD') );
+    const result = items.filter(event => event.price >= price[0] && event.price <= price[1] &&  moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD') );
 
     items.forEach(event => {
         console.log(moment(event.date).format('YYYY/MM/DD'));
