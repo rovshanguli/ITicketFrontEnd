@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Filter from "../layout/Filter";
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 
 
@@ -9,12 +10,13 @@ function Concerts() {
     const [items, setItems] = useState([]);
     const [visible, setVisible] = useState(3);
     const [hallid,setHallId] = useState();
-    const [date,setDate] = useState();
+    const [date,setDate] = useState('');
     const [price, setPrice] = useState([0, 100]);
     
 
+    let startAndEnd = date.split('to');
     
-
+    
     const showMoreItems = () => {
         setVisible((prevValue) => prevValue + 3)
     }
@@ -31,8 +33,14 @@ function Concerts() {
         console.log(id);
     }
 
-    const result = items.filter(event => event.price > price[0]);
+    const result = items.filter(event => event.price >= price[0] && event.price <= price[1] &&  moment(startAndEnd[1]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD') );
 
+    items.forEach(event => {
+        console.log(moment(event.date).format('YYYY/MM/DD'));
+    });
+    
+    console.log(moment(startAndEnd[0]).format('YYYY/MM/DD'));
+   
 
     return (
         <div className='container'>

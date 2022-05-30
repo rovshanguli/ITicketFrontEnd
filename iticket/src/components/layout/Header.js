@@ -82,7 +82,6 @@ function Header() {
   const [number, setNumber] = useState();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
-  console.log(password);
   //Prop for Api End
 
 
