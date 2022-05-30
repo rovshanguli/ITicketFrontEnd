@@ -6,8 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Autocomplete, TextField } from '@mui/material';
-import '../../assets/sass/layout/header.scss';
-import Swal from 'sweetalert2/src/sweetalert2.js';
+import '../../assets/sass/layout/header.scss'
 
 
 
@@ -83,46 +82,34 @@ function Header() {
   const [number, setNumber] = useState();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
+  console.log(password);
   //Prop for Api End
 
 
   async function register(e) {
-    
+    debugger
     e.preventDefault();
     await axios.post('/api/account/register', {
 
+    
       Email: mail,
       Password: password,
       FullName: fullname,
       UserName: username,
       PhoneNumber: number,
+      
 
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
-        console.log("salam");
-        setRegisterOpen(false)
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your work has been saved',
-          showConfirmButton: false,
-          timer: 1500
-        })
+
       })
       .catch(function (error) {
-        console.log("sagol");
-        setRegisterOpen(false)
-        debugger
-        Swal.fire({
-          zindex: 12,
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your work has been saved',
-          showConfirmButton: false,
-          timer: 1500000
-        })
+        
 
       });
+
+
+
   }
 
 
@@ -306,7 +293,7 @@ function Header() {
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
                   <Form onSubmit={(e) => register(e)}>
 
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicName">
+                  <Form.Group className="mb-3 mt-4" controlId="formBasicName">
                       <Form.Control type="text" onChange={(e) => setFullname(e.target.value)} placeholder="Ad / Soyad" />
                     </Form.Group>
 
@@ -326,7 +313,7 @@ function Header() {
                       <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 
-                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>
+                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>{' '}
 
                   </Form>
 

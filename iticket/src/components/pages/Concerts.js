@@ -1,107 +1,66 @@
-import React from 'react'
-import Filter from '../layout/Filter'
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Filter from "../layout/Filter";
+import { Link } from 'react-router-dom';
+
+
 
 function Concerts() {
-    const cards = [
-        {
-          id:'1',
-          bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-          img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-          price: "5",
-          name: "Sagopa Kajmer",
-          date: "10 iyun 2022",
-          hall: "Elektra Events Hall"
-        },
-        {
-          id:'2',
-          bgimg: "https://cdn.iticket.az/event/poster_bg/NL4Oza9xgJ3FCtzsxbsu4OVosNfibm7PmPW1MT9o.jpg",
-          img: "https://cdn.iticket.az/event/poster/gm1OcnrlYiLqvnK6Bi9s4ChzcBI7Yurwn8DiEh0X.png",
-          price: "5",
-          name: "Sagopa Kajmer",
-          date: "10 iyun 2022",
-          hall: "Elektra Events Hall"
-        },
-        {
-          id:'3',
-          bgimg: "https://cdn.iticket.az/event/poster_bg/5srwI3Nfh5cGmZZlpOpk8lNYlbvmkmH5k12kIeqP.jpg",
-          img: "https://cdn.iticket.az/event/poster/UhjNubJp8u7ul0zpFdm6asOqv4lSdOelvQjwdS7u.png",
-          price: "5",
-          name: "Sagopa Kajmer",
-          date: "10 iyun 2022",
-          hall: "Elektra Events Hall"
-        },
-        {
-          id:'4',
-          bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-          img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-          price: "5",
-          name: "Sagopa Kajmer",
-          date: "10 iyun 2022",
-          hall: "Elektra Events Hall"
-        },
-        {
-          id:'5',
-          bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-          img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-          price: "5",
-          name: "Sagopa Kajmer",
-          date: "10 iyun 2022",
-          hall: "Elektra Events Hall"
-        },
-        {
-          id:'6',
-          bgimg: "https://cdn.iticket.az/event/poster_bg/hM2SYe16SbKWyutMq3rS2pgc5F8UIo6p3rQtaN0w.jpg",
-          img: "https://cdn.iticket.az/event/poster/T2YvJQuPaX6wtcUSh83mvzVlaITkqUdNGs4vPCcR.png",
-          price: "5",
-          name: "Sagopa Kajmer",
-          date: "10 iyun 2022",
-          hall: "Elektra Events Hall"
-        }
-    
-    
-      ]
+    const [Items, setItems] = useState([]);
+    const [visible, setVisible] = useState(3);
+
+    const showMoreItems = () => {
+        setVisible((prevValue) => prevValue + 3)
+    }
+
+    useEffect(() => {
+        loadDatas();
+
+    }, []);
+
+    const loadDatas = async () => {
+
+        const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
+        setItems(result.data)
+    }
+
+    const Detail = async id => {
+        console.log(id);
+    }
+
     return (
         <div className='container'>
             <h3 className='mt-5'>Konsertlər</h3>
             <div className='mt-5'>
                 <Filter />
             </div>
-            <div className='row'>
-                {cards.map(card =>
-                    <div key={card.id.toString()} className="col-lg-4 col-md-6 col-sm-12 mt-5">
-                        <div className='px-3' >
-                            <a href="/events/concerts/sagopa-kajmer" className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
-                                <div className="relative h-full">
-                                    <div className="image">
-                                        <img src={`${card.bgimg}`} data-src="https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg" alt="SAGOPA KAJMER" className="bg ls-is-cached lazyloaded" />
-                                        <img src={`${card.img}`} data-src="https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png" alt="SAGOPA KAJMER" className=" ls-is-cached lazyloaded" />
-                                        <span className="btn"><span className="price">{card.price} ₼</span>-dan</span>
+            <div className='row '>
+                {Items.slice(0, visible).map(card =>
+                    <div className="col-4 mb-3">
+                        <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+                            <div className="relative h-full">
+                                <div className="image">
+                                    <img src={`data:image/jpeg;base64,${card.backImage}`} data-src={`data:image/jpeg;base64,${card.backImage}`} alt="" className="bg ls-is-cached lazyloaded" />
+                                    <img src={`data:image/jpeg;base64,${card.image}`} data-src={`data:image/jpeg;base64,${card.image}`} alt="" className=" ls-is-cached lazyloaded" />
+                                    <span className="btn"><span className="price">{card.price} ₼</span>-dan</span>
+                                </div>
+                                <div className="info">
+                                    <div className="event-name">
+                                        {card.name}
                                     </div>
-                                    <div className="info">
-                                        <div className="event-name">
-                                            {card.name}
-                                        </div>
-                                        <div className="flex w-full items-center flex-1">
-                                            <div className="event-date">
-                                                {card.date}
-                                            </div>
-                                            <span className="separator">
-                                                •
-                                            </span>
-                                            <div className="venue-name">
-                                                {card.hall}
-                                            </div>
+                                    <div className="flex w-full items-center flex-1">
+                                        <div className="event-date">
+                                            {card.date.substring(0, 10)}
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </Link>
                     </div>
-
-
                 )}
-
             </div>
+            <div className="load">   <button className="btn btn-primary loadmore mt-4" onClick={showMoreItems}>Load More</button></div>
+
         </div>
     )
 }

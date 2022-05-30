@@ -1,19 +1,46 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react'
 // import Seatmap from 'react-seatmap';
 // import SeatPicker from "react-seat-picker";
 import '../../assets/sass/details/detail.scss'
 
-function Detail() {
+function Detail(props) {
+    const { id } = useParams();
+
+    const [detailimg, setDetailimg]= useState();
+    function initPromise() {
+
+        const response = axios.get(`/api/Event/GetById/${id}`)
+        return new Promise(function (res, rej) {
+            res(response);
+        })
+    }
+
+
+
+    useEffect(() => {
+        initPromise()
+          .then(function (result) {
+            // "initResolve"
+            return result.data;
+          })
+          .then(function (result) {
+       setDetailimg(result.detailimage)
+    
+          });
+      });
+
     const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
-      });
+    });
     return (
         <div>
             <div className='event-image'>
                 {/* <img className='imag' src="https://cdn.iticket.az/event/cover/XHVymjWZKrh7pMeNgCy7cqmukHya71ubiNkMhOeD.jpg" alt="" /> */}
-                <img className='imag' src="https://cdn.iticket.az/event/cover/UkA52Bk9qk1pjNbfi8w5TiLVkpvHtAke4uCIcdpW.jpg" alt="" />
+                <img className='imag'     src={`data:image/jpeg;base64,${detailimg}`}  alt="" />
             </div>
 
             <div className='container'>

@@ -26,6 +26,7 @@ import Profile from './components/pages/profile/Profile';
 import MyOrders from './components/pages/profile/profileComponent/MyOrders';
 import UpdatePassword from './components/pages/profile/profileComponent/UpdatePassword';
 import Order from './components/pages/basketpage/basketcomponent/Order';
+import LoadMore from './components/pages/LoadMore';
 
 
 
@@ -54,12 +55,13 @@ function App() {
           <Route exact path="/refund" element={<Refund />} />
           <Route exact path="/support" element={<Support />} />
           <Route exact path="/terms" element={<Terms />} />
-          <Route exact path="/detail" element={<Detail />} />
+          <Route exact path="/detail/:id" element={<Detail />} />
           <Route exact path="/basket" element={<Basket />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/myorders" element={<MyOrders />} />
           <Route exact path="/updatepassword" element={<UpdatePassword />} />
           <Route exact path="/order" element={<Order />} />
+          <Route exact path="/loadmore" element={<LoadMore />} />
         </Routes>
         <Footer />
       </div>
