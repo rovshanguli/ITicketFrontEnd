@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import '../../assets/sass/layout/filter.scss';
 import "flatpickr/dist/themes/material_green.css";
 import Flatpickr from "react-flatpickr";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import axios from 'axios';
+import { Map } from '@mui/icons-material';
+import { width } from '@mui/system';
 
 
 
@@ -11,12 +14,16 @@ import Slider from '@mui/material/Slider';
 
 
 function Filter(props) {
-
+    const [items, setItems] = useState([]);
+    const loadDatas = async () => {
+        const result = await axios.get("https://localhost:44351/api/Hall/GetAllHalls")
+        setItems(result.data)
+    }
 
     //Date Filter 
     const options = {
         datetime: {
-            maxDate:new Date(2022, 7, 22) ,
+            maxDate: new Date(2022, 7, 22),
             mode: 'range',
             altInputClass: 'hide',
             dateFormat: 'M d Y',
@@ -24,7 +31,10 @@ function Filter(props) {
             wrap: true,
         },
     }
-    
+
+    useEffect(() => {
+        loadDatas();
+    }, []);
 
     //Price Filter
     function valuetext(value) {
@@ -35,7 +45,6 @@ function Filter(props) {
         if (!Array.isArray(newValue)) {
             return;
         }
-
         if (activeThumb === 0) {
             props.setPrice([Math.min(newValue[0], props.getPrice[1] - minDistance), props.getPrice[1]]);
         } else {
@@ -48,151 +57,22 @@ function Filter(props) {
         <div>
             <div className="row">
                 <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center placearea">
-                    <div className='filter'>
-                        <div className='price-range-view'>
-                       
-                            <select defaultValue="" onChange={(e) => props.hallId(e.target.value)} >
-                                <option className='place'  value="" disabled hidden>
+                    <div className='filter' style={{width:'100%'}}>
+                        <div className='price-range-view' style={{width:'100%'}}>
+
+                            <select defaultValue="" onChange={(e) => props.hallId(e.target.value)} style={{width:'100%'}} >
+                                <option className='place' value="" disabled hidden>
                                     Məkanı Seçin
                                 </option>
-                                <option value={'1'}>
-                                    Heydər Əliyev Sarayı
-                                </option>
-                                <option>
-                                    Akademik Milli Dram Teatrı
-                                </option>
-                                <option>
-                                    Beynəlxalq Muğam Mərkəzi
-                                </option>
-                                <option>
-                                    Azərbaycan Dövlət Akademik Filarmoniyası
-                                </option>
-                                <option>
-                                    Elektra Events Hall
-                                </option>
-                                <option>
-                                    Kamera və orqan musiqisi zalı
-                                </option>
-                                <option>
-                                    Akademik Rus Dram Teatrı
-                                </option>
-                                <option>
-                                    Rəşid Behbudov adına Dövlət Mahnı Teatrı
-                                </option>
-                                <option>
-                                    Passage 1901
-                                </option>
-                                <option>
-                                    Azərbaycan Dövlət Akademik Musiqili Teatrı
-                                </option>
-                                <option>
-                                    Gənc Tamaşaçılar kiçik səhnə
-                                </option>
-                                <option>
-                                    Yaşıl Teatr
-                                </option>
-                                <option>
-                                    Nizami Kino Mərkəzi
-                                </option>
-                                <option>
-                                    Bakı Konqres Mərkəzi
-                                </option>
-                                <option>
-                                    Hotel Fairmont Baku
-                                </option>
-                                <option>
-                                    Marionet Teatrı
-                                </option>
-                                <option>
-                                    Sea Breeze Resort
-                                </option>
-                                <option>
-                                    Albion Pub
-                                </option>
-                                <option>
-                                    Park Cinema Metro Park
-                                </option>
-                                <option>
-                                    Azərbaycan İstiqlal Muzeyi
-                                </option>
-                                <option>
-                                    Üzeyir Hacıbəylinin ev-muzeyi
-                                </option>
-                                <option>
-                                    Atəşgah məbədi
-                                </option>
-                                <option>
-                                    Dreamland Golf Club
-                                </option>
-                                <option>
-                                    “Yanardağ” Təbiət Qoruğu
-                                </option>
-                                <option>
-                                    Pizza Hut
-                                </option>
-                                <option>
-                                    Dalğa Arena
-                                </option>
-                                <option>
-                                    Yanardağ &amp; Atəşgah
-                                </option>
-                                <option>
-                                    Şəkixanovlar evi
-                                </option>
-                                <option>
-                                    Kiş Alban Məbədi
-                                </option>
-                                <option>
-                                    Şəki Xan Sarayı
-                                </option>
-                                <option>
-                                    Free Children
-                                </option>
-                                <option>
-                                    Azərbaycan Teatr Xadimləri İttifaqı
-                                </option>
-                                <option>
-                                    Şuşa Dövlət Musiqili Dram Teatrı
-                                </option>
-                                <option>
-                                    “Qala” Dövlət Tarix Etnoqrafiya Qoruğu
-                                </option>
-                                <option>
-                                    Bakı Fotoqrafiya Evi
-                                </option>
-                                <option>
-                                    "İçərişəhər Dövlət" Tarix-Memarlıq Qoruğu
-                                </option>
-                                <option>
-                                    Bakı Zooloji Parkı
-                                </option>
-                                <option>
-                                    "Suraxanı" Gəmi-Muzey
-                                </option>
-                                <option>
-                                    Hərbi Qənimətlər Parkı
-                                </option>
-                                <option>
-                                    Göygöl
-                                </option>
-                                <option>
-                                    Pizza Hut Megafun
-                                </option>
-                                <option>
-                                    Flora Hostel
-                                </option>
-                                <option>
-                                    27qm-Tarana's small gallery and cafe
-                                </option>
-                                <option>
-                                    The Orange Grove
-                                </option>
-                                <option>
-                                    Bakı Kristal Zalı və Dənizkənarı Bulvar
-                                </option>
+                                {items.map(hall =>
+                                    <option value={hall.id} key={hall.id}>
+                                        {hall.name}
+                                    </option>
+                                )}
+
                             </select>
 
-                            
+
                         </div>
 
                     </div>
@@ -221,6 +101,7 @@ function Filter(props) {
                         <div className='price-range-view'> Qiymət {props.getPrice[0]} ₼-dan {props.getPrice[1]} ₼-dək</div>
                         <Box sx={{ width: '100%' }}>
                             <Slider
+                                sx={{ width: '50%' }}
                                 getAriaLabel={() => 'Minimum distance'}
                                 value={props.getPrice}
                                 onChange={handleChange}

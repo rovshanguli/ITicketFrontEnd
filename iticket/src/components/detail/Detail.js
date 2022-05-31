@@ -9,7 +9,6 @@ import '../../assets/sass/details/detail.scss'
 
 function Detail(props) {
     const { id } = useParams();
-
     const [detailimagen, setDetailimage] = useState();
     const [eventdate, setEventdate] = useState();
     const [eventtime, setEventtime] = useState();
