@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import '../../assets/sass/layout/filter.scss';
 import "flatpickr/dist/themes/material_green.css";
 import Flatpickr from "react-flatpickr";

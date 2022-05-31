@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import moment from 'moment'
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react'
 // import Seatmap from 'react-seatmap';
 // import SeatPicker from "react-seat-picker";
@@ -9,49 +10,52 @@ import '../../assets/sass/details/detail.scss'
 function Detail(props) {
     const { id } = useParams();
 
-    const [detailimg, setDetailimg] = useState();
+    const [detailimagen, setDetailimage] = useState();
+    const [eventdate, setEventdate] = useState();
+    const [eventtime, setEventtime] = useState();
+
+    const [eventhall, setEventhall] = useState();
     function initPromise() {
 
         const response = axios.get(`/api/Event/GetById/${id}`)
         return new Promise(function (res, rej) {
             res(response);
+
         })
+
     }
 
+  
 
 
 
     useEffect(() => {
+
         initPromise()
             .then(function (result) {
                 // "initResolve"
                 return result.data;
             })
             .then(function (result) {
-                setDetailimg(result.detailimage)
-
+                debugger
+                setDetailimage(result.detailImage)
+                setEventdate(result.date)
+                setEventtime(result.date)
+                setEventhall(result.hall.name)
             });
+
+       
     });
 
     const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
-
-    var chart;
-    function printSelectedObjects() {
-        chart.listSelectedObjects(
-            selectedObjects => console.table(selectedObjects)
-        );
-    }
-
-
-
     return (
         <div>
             <div className='event-image'>
-                {/* <img className='imag' src="https://cdn.iticket.az/event/cover/XHVymjWZKrh7pMeNgCy7cqmukHya71ubiNkMhOeD.jpg" alt="" /> */}
-                <img className='imag' src={`data:image/jpeg;base64,${detailimg}`} alt="" />
+               
+                <img src={`data:image/jpeg;base64,${detailimagen}`} alt="" className='imag' />
             </div>
 
             <div className='container'>
@@ -65,7 +69,7 @@ function Detail(props) {
                                     <b>Event Date</b>
                                 </div>
                                 <div className='text'>
-                                    <p>19.05.2022</p>
+                                    <p>{moment(eventdate).format("DD/MM/YYYY")}</p>
                                 </div>
                             </div>
 
@@ -80,7 +84,7 @@ function Detail(props) {
                                     <b>Event Time</b>
                                 </div>
                                 <div className='text'>
-                                    <p>20:00 - 21:30</p>
+                                    <p>{moment(eventtime).format("HH:MM")}</p>
                                 </div>
                             </div>
 
@@ -95,7 +99,7 @@ function Detail(props) {
                                     <b>Venue</b>
                                 </div>
                                 <div className='text'>
-                                    <p>Heydar Aliyev Palace</p>
+                                    <p>{eventhall}</p>
                                 </div>
                             </div>
 
@@ -150,14 +154,7 @@ function Detail(props) {
                     region="eu"
                     language="en"
                 />
-
-
             </div>
-            <button onClick={() => printSelectedObjects(
-                
-            )}>
-                Print Selected Seats to console
-            </button>
         </div>
 
     )

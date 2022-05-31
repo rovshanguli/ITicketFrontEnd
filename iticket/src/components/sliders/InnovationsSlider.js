@@ -98,6 +98,7 @@ function InnovationsSlider() {
                                 </Link>
                             </div>
                         )}
+
                     </Slider>
 
                 </div>

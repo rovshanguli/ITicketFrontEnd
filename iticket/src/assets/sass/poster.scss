@@ -106,7 +106,7 @@ body {
     border-radius: 1rem;
     --tw-bg-opacity: 1;
     background-color: rgba(255,221,0,var(--tw-bg-opacity));
-    padding: 1.25rem;
+    padding: 1.5rem;
     height: 350px;
     overflow: hidden;
    
@@ -145,29 +145,28 @@ body {
     box-sizing: border-box;
     border: 0 solid;
 }
-*, :after, :before {
-    box-sizing: border-box;
-    border: 0 solid;
-}
+
 .app-block .text, .app-block .title {
     margin-bottom: 1.25rem;
 }
-.app-block .text, .app-block .title {
-    margin-bottom: 1.25rem;
-}
+
 .app-block .title {
     font-size: 1.875rem;
     line-height: 2.25rem;
     font-weight: 700;
     line-height: 1;
 }
+
 .app-block .links {
-    display: inline-flex;
+    display: inline-block;
     align-items: center;
+  
     border-radius: 1rem;
     --tw-bg-opacity: 1;
     background-color: rgba(0,0,0,var(--tw-bg-opacity));
 }
+
+
 
 
 

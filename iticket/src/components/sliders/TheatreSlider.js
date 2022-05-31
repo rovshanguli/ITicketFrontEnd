@@ -57,6 +57,9 @@ function TheatreSlider() {
             }
         ]
     };
+    const Detail = async id => {
+        console.log(id);
+    } 
 
     return (
         <div className='theatre'>
@@ -68,7 +71,7 @@ function TheatreSlider() {
                     <Slider {...settings}>
                         {events.map(card =>
                             <div className='px-3' key={card.toString()}>
-                                <Link to={'/detail'} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+                                <Link  to={`/detail/${card.id}`} onClick={()=> Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                                     <div className="relative h-full">
                                         <div className="image">
                                         <img src={`data:image/jpeg;base64,${card.backImage}`} data-src={`data:image/jpeg;base64,${card.backImage}`} alt="" className="bg ls-is-cached lazyloaded" />
