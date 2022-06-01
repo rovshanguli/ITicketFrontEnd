@@ -38,6 +38,7 @@
     "react-slick": "^0.29.0",
     "reactstrap": "^9.0.2",
     "sass": "^1.51.0",
+    "seatsio": "^14.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"

@@ -5,8 +5,7 @@ import Flatpickr from "react-flatpickr";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import axios from 'axios';
-import { Map } from '@mui/icons-material';
-import { width } from '@mui/system';
+
 
 
 

@@ -16,7 +16,6 @@ function Concerts() {
 
     let startAndEnd = date.split('to');
 
-
     const showMoreItems = () => {
         setVisible((prevValue) => prevValue + 3)
     }
@@ -36,19 +35,16 @@ function Concerts() {
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
     let result = items;
     if (hallid != null) {
-        result = items.filter(item => item.hallID == hallid)
+        result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
     }
    
-    if(date.length != 0){
-        result = items.filter(item => moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(item.date).format('YYYY/MM/DD') &&  moment(startAndEnd[1]).format('YYYY/MM/DD') > moment(item.date).format('YYYY/MM/DD'))
+    if(date.length !== 0){
+        result = result.filter(item => moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(item.date).format('YYYY/MM/DD') &&  moment(startAndEnd[1]).format('YYYY/MM/DD') > moment(item.date).format('YYYY/MM/DD'))
     }
 
     if(price != null){
         result = result.filter(item => item.price > price[0] && item.price < price[1])
     }
-
-  
-
 
     return (
         <div className='container'>
