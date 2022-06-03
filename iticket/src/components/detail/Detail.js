@@ -48,12 +48,12 @@ function Detail() {
     });
 
     let selectedSeats = [];
-    
+
     if (JSON.parse(localStorage.getItem('seats')) != null) {
         selectedSeats = JSON.parse(localStorage.getItem('seats'))
     }
 
-    
+
     return (
         <div>
             <div className='event-image'>
@@ -130,7 +130,7 @@ function Detail() {
                                 // remove the deselected seat id from the array
                                 var index = -1;
                                 for (let i = 0; i < selectedSeats.length; i++) {
-                                    if (selectedSeats[i].label == obj.label) {
+                                    if (selectedSeats[i].label === obj.label) {
                                         index = i
                                     }
                                 }

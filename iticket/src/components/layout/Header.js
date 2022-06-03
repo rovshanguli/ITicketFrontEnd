@@ -83,6 +83,8 @@ function Header() {
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
   //Prop for Api End
+  const [email, setEmail] = useState();
+  const [logpassword, setLogpassword] = useState();
 
 
   async function register(e) {
@@ -90,20 +92,20 @@ function Header() {
     e.preventDefault();
     await axios.post('/api/account/register', {
 
-    
+
       Email: mail,
       Password: password,
       FullName: fullname,
       UserName: username,
       PhoneNumber: number,
-      
+
 
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
 
       })
       .catch(function (error) {
-        
+
 
       });
 
@@ -111,6 +113,20 @@ function Header() {
 
   }
 
+  async function login(e) {
+debugger
+    await axios.post(`/api/Account/Login`, {
+      Email: email,
+      Password: logpassword
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+
+      })
+      .catch(function (error) {
+
+
+      })
+  }
 
 
   const [searchOpen, setSearchOpen] = React.useState(false);
@@ -219,15 +235,15 @@ function Header() {
                   Login
                 </Typography>
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
-                  <Form>
+                  <Form onSubmit={(e) => login(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
 
-                      <Form.Control type="email" placeholder="Enter email" />
+                      <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
 
                     </Form.Group>
                     <Form.Group className="mb-3 mt-3" controlId="formBasicPassword">
 
-                      <Form.Control outline="yellow" type="password" placeholder="Password" />
+                      <Form.Control outline="yellow" type="password" onChange={(e) => setLogpassword(e.target.value)} placeholder="Password" />
                     </Form.Group>
                     <Button className='login' onClick={handleForgotOpen}>Unutmusunuz?</Button>
                     <Button className="warning login mt-3" size="sm" type="submit"> Daxil Ol</Button>{' '}
@@ -292,7 +308,7 @@ function Header() {
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
                   <Form onSubmit={(e) => register(e)}>
 
-                  <Form.Group className="mb-3 mt-4" controlId="formBasicName">
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicName">
                       <Form.Control type="text" onChange={(e) => setFullname(e.target.value)} placeholder="Ad / Soyad" />
                     </Form.Group>
 

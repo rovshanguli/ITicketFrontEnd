@@ -14,7 +14,7 @@ function FilmsSlider() {
     }, []);
 
     const loadEvents = async () => {
-        const result = await axios.get("https://localhost:44351/api/event/getallevents");
+        const result = await axios.get("https://localhost:44351/api/event/GetByCateId/11");
         setEvent(result.data);
     }
     var settings = {
@@ -84,7 +84,7 @@ function FilmsSlider() {
                                             </div>
                                             <div className="flex w-full items-center flex-1">
                                                 <div className="event-date">
-                                                    {card.date}
+                                                {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
                                                     •

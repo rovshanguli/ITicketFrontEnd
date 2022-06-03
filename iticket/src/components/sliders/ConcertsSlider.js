@@ -11,14 +11,18 @@ function ConcertsSlider() {
 
     const [events, setEvent] = useState([]);
 
+
     useEffect(() => {
         loadEvents();
     }, []);
 
     const loadEvents = async () => {
-        const result = await axios.get("https://localhost:44351/api/event/getallevents");
+        const result = await axios.get("/api/event/GetByCateId/4");
         setEvent(result.data);
+       
+      
     }
+ 
 
 
 
@@ -90,7 +94,7 @@ function ConcertsSlider() {
                                             </div>
                                             <div className="flex w-full items-center flex-1">
                                                 <div className="event-date">
-                                                    {card.date}
+                                                {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
                                                     •

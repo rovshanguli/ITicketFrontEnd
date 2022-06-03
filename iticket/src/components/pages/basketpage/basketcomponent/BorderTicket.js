@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import '../../../../assets/sass/basket/borderticket.scss'
 
@@ -67,6 +67,7 @@ function BorderTicket() {
                                         <Form.Control type="email" placeholder="Email" />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicCheckbox">
+                                    
                                         <Form.Check type="checkbox" label=" Şərtləri və qaydaları qəbul edirəm." />
                                     </Form.Group>
 
