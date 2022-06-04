@@ -19,10 +19,10 @@ function ConcertsSlider() {
     const loadEvents = async () => {
         const result = await axios.get("/api/event/GetByCateId/4");
         setEvent(result.data);
-       
-      
+
+
     }
- 
+
 
 
 
@@ -69,7 +69,7 @@ function ConcertsSlider() {
     };
     const Detail = async id => {
         console.log(id);
-    } 
+    }
 
     return (
         <div className='concerts'>
@@ -81,7 +81,7 @@ function ConcertsSlider() {
                     <Slider {...settings}>
                         {events.map(card =>
                             <div className='px-3' key={card.toString()}>
-                                <Link to={`/detail/${card.id}`} onClick={()=> Detail(card.id)}  className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+                                <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                                     <div className="relative h-full">
                                         <div className="image">
                                             <img src={`data:image/jpeg;base64,${card.backImage}`} data-src={`data:image/jpeg;base64,${card.backImage}`} alt="" className="bg ls-is-cached lazyloaded" />
@@ -94,7 +94,7 @@ function ConcertsSlider() {
                                             </div>
                                             <div className="flex w-full items-center flex-1">
                                                 <div className="event-date">
-                                                {card.date.substring(0, 10)}
+                                                    {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
                                                     •

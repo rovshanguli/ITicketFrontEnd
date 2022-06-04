@@ -1,65 +1,70 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import moment from 'moment'
-
-import { SeatsioSeatingChart } from '@seatsio/seatsio-react'
+import moment from 'moment';
+import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 
 
 import '../../assets/sass/details/detail.scss'
 import { Form } from 'react-bootstrap';
 
 function Detail() {
-
     const { id } = useParams();
-    const [detailimagen, setDetailimage] = useState();
-    const [eventdate, setEventdate] = useState();
-    const [eventtime, setEventtime] = useState();
+    const [data, setData] = useState();
 
-    const [eventhall, setEventhall] = useState();
-    function initPromise() {
-        const response = axios.get(`/api/Event/GetById/${id}`)
-        return new Promise(function (res, rej) {
-            res(response);
-        })
+    function fetchSampleData() {
+        let method = 'get' // ex. get | post | put | delete , etc
+        return axios[method](`/api/Event/GetById/${id}`)
+            .then((response) => {
+                // success
+                //-> save response to state, notification
+                return response // pass to finish
+            })
+            .catch((error) => {
+                // failed
+                //-> prepare, notify, handle error
+
+                return false // pass to finish
+            })
+            .then((resultBoolean) => {
+                // do something after success or error
+
+                return resultBoolean // for await purpose
+            });
+    }
+
+    // Implementation
+    async function fetchResult() {
+        let success = await fetchSampleData()
+        if (success) {
+           setData(success.data)
+        } else {
+            
+        }
     }
 
     useEffect(() => {
+        fetchResult()
+    }, []);
 
-        initPromise()
-            .then(function (result) {
-                // "initResolve"
-                return result.data;
-            })
-            .then(function (result) {
-
-                setDetailimage(result.detailImage)
-                setEventdate(result.date)
-                setEventtime(result.date)
-                setEventhall(result.hall.name)
-            });
-
-
-    });
-
-    const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
-
+    //Helpers start
     let selectedSeats = [];
-
     if (JSON.parse(localStorage.getItem('seats')) != null) {
         selectedSeats = JSON.parse(localStorage.getItem('seats'))
     }
 
-
+    const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "AZN"
+    });
+    //Helpers End
+    
     return (
+        
         <div>
             <div className='event-image'>
-                <img src={`data:image/jpeg;base64,${detailimagen}`} alt="" className='imag' />
+                <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
             </div>
-
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-4 col-md-6 col-sm-12 mt-5'>
@@ -71,7 +76,7 @@ function Detail() {
                                     <b>Event Date</b>
                                 </div>
                                 <div className='text'>
-                                    <p>{moment(eventdate).format("DD/MM/YYYY")}</p>
+                                    <p>{moment(data?.date).format("DD/MM/YYYY")}</p>
                                 </div>
                             </div>
 
@@ -86,7 +91,7 @@ function Detail() {
                                     <b>Event Time</b>
                                 </div>
                                 <div className='text'>
-                                    <p>{moment(eventtime).format("HH:MM")}</p>
+                                    <p>{moment(data?.date).format("HH:MM")}</p>
                                 </div>
                             </div>
 
@@ -101,7 +106,7 @@ function Detail() {
                                     <b>Venue</b>
                                 </div>
                                 <div className='text'>
-                                    <p>{eventhall}</p>
+                                    <p>{data?.hall.name}</p>
                                 </div>
                             </div>
 
@@ -147,7 +152,7 @@ function Detail() {
                                 ticketTypes: [
                                     {
                                         ticketType: "event",
-                                        price: 30,
+                                        price: data?.price,
                                         label: "For event",
                                         description: "Salam meleyki"
                                     }
@@ -158,7 +163,7 @@ function Detail() {
                                 ticketTypes: [
                                     {
                                         ticketType: "event",
-                                        price: 40,
+                                        price: data?.price + 20,
                                         label: "For event",
                                         description: "Salam meleyki"
                                     }
@@ -172,7 +177,7 @@ function Detail() {
                         openDraftDrawing={false}
                         event="smallTheatreEvent"
                         region="eu"
-                        language="en"
+                        language="tr"
 
                     />
                 </Form>

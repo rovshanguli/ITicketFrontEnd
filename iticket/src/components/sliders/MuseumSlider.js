@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Slider from 'react-slick/lib/slider';
-import '../../assets/sass/sliders/theatreslider.scss'
+import '../../assets/sass/sliders/museumslider.scss'
 
-function TheatreSlider() {
-
+function MuseumSlider() {
     const [events, setEvent] = useState([]);
 
     useEffect(() => {
@@ -13,11 +12,9 @@ function TheatreSlider() {
     }, []);
 
     const loadEvents = async () => {
-        const result = await axios.get("https://localhost:44351/api/event/GetByCateId/5");
+        const result = await axios.get("/api/event/GetByCateId/8");
         setEvent(result.data);
     }
-
-
     var settings = {
         dots: true,
         infinite: true,
@@ -57,15 +54,15 @@ function TheatreSlider() {
             }
         ]
     };
+
     const Detail = async id => {
         console.log(id);
     }
-
     return (
-        <div className='theatre'>
+        <div className='museum'>
             <div className='container'>
                 <div className="row mt-5">
-                    <h1 className='theatrename'>Tamaşalar</h1>
+                    <h1 className='museumname'>Muzeylər</h1>
 
 
                     <Slider {...settings}>
@@ -107,10 +104,7 @@ function TheatreSlider() {
 
 
 
-
-
-
     )
 }
 
-export default TheatreSlider
+export default MuseumSlider

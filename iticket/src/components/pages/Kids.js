@@ -22,7 +22,7 @@ function Kids() {
     }, []);
 
     const loadDatas = async () => {
-        const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
+        const result = await axios.get("https://localhost:44351/api/event/GetByCateId/7");
         setItems(result.data)
     }
 
@@ -33,7 +33,7 @@ function Kids() {
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
     let result = items;
     if (hallid != null) {
-        result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
+        result = result.filter(item => parseInt(item.hallID) === parseInt(hallid))
     }
 
     if (date.length !== 0) {

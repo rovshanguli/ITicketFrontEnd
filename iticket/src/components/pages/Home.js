@@ -11,6 +11,7 @@ import TourismSlider from '../sliders/TourismSlider'
 import FilmsSlider from '../sliders/FilmsSlider'
 import Carousel from '../sliders/Carousel'
 import Poster from '../Poster'
+import MuseumSlider from '../sliders/MuseumSlider'
 
 
 
@@ -30,6 +31,7 @@ function Home() {
             <TourismSlider />
             <KidsSlider />
             <TheatreSlider />
+            <MuseumSlider />
             <FilmsSlider />
             <Poster />
 

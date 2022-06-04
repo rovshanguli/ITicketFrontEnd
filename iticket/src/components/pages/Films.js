@@ -22,7 +22,7 @@ function Films() {
     }, []);
 
     const loadDatas = async () => {
-        const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
+        const result = await axios.get("https://localhost:44351/api/event/GetByCateId/11");
         setItems(result.data)
     }
 

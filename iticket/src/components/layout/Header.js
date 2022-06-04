@@ -172,9 +172,10 @@ debugger
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/kids">Uşaqlar</NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/museums">Muzeylər</NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/films">Filmlər</NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link px-3 navba" to="/tourism">Turizm</NavLink>
               </Nav>
               <div className="basket d-flex justify-content-end">
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/"><i className="far fa-heart"></i></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/favorites"><i className="far fa-heart"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>0</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>

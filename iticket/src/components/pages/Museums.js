@@ -23,7 +23,7 @@ function Museums() {
   }, []);
 
   const loadDatas = async () => {
-    const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
+    const result = await axios.get("/api/event/GetByCateId/8");
     setItems(result.data)
   }
 

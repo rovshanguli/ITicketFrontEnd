@@ -27,6 +27,8 @@ import MyOrders from './components/pages/profile/profileComponent/MyOrders';
 import UpdatePassword from './components/pages/profile/profileComponent/UpdatePassword';
 import Order from './components/pages/basketpage/basketcomponent/Order';
 import LoadMore from './components/pages/LoadMore';
+import Favorites from './components/pages/Favorites';
+import Tourism from './components/pages/Tourism';
 
 
 
@@ -46,7 +48,7 @@ function App() {
           <Route exact path="/kids" element={<Kids />} />
           <Route exact path="/museums" element={<Museums />} />
           <Route exact path="/films" element={<Films />} />
-  
+          <Route exact path="/tourism" element={<Tourism />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contacts />} />
           <Route exact path="/eticket" element={<ETicket />} />
@@ -62,6 +64,7 @@ function App() {
           <Route exact path="/updatepassword" element={<UpdatePassword />} />
           <Route exact path="/order" element={<Order />} />
           <Route exact path="/loadmore" element={<LoadMore />} />
+          <Route exact path="/favorites" element={<Favorites />} />
         </Routes>
         <Footer />
       </div>

@@ -4,9 +4,7 @@ import Filter from "../layout/Filter";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-
-
-function Concerts() {
+function Favorites() {
     const [items, setItems] = useState([]);
     const [visible, setVisible] = useState(3);
     const [hallid, setHallId] = useState();
@@ -24,7 +22,7 @@ function Concerts() {
     }, []);
 
     const loadDatas = async () => {
-        const result = await axios.get("/api/event/GetByCateId/4");
+        const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
         setItems(result.data)
     }
 
@@ -35,7 +33,7 @@ function Concerts() {
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
     let result = items;
     if (hallid != null) {
-        result = result.filter(item => parseInt(item.hallID) === parseInt(hallid))
+        result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
     }
 
     if (date.length !== 0) {
@@ -48,7 +46,7 @@ function Concerts() {
 
     return (
         <div className='container'>
-            <h3 className='mt-5'>Konsertlər</h3>
+            <h3 className='mt-5'>Seçilmişlər</h3>
             <div className='mt-5'>
                 <Filter hallId={setHallId} date={setDate} setPrice={setPrice} getPrice={price} />
             </div>
@@ -84,4 +82,4 @@ function Concerts() {
     )
 }
 
-export default Concerts
+export default Favorites
