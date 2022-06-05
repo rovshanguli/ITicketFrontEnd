@@ -11,14 +11,13 @@ import { Form } from 'react-bootstrap';
 function Detail() {
     const { id } = useParams();
     const [data, setData] = useState();
+    const [soldSeat, setSoldSeats] = useState([]);
     
-   
-
+    
 
     // Implementation
     useEffect(() => {
         function fetchSampleData() {
-
             let method = 'get' // ex. get | post | put | delete , etc
             return axios[method](`/api/Event/GetById/${id}`)
                 .then((response) => {
@@ -38,7 +37,6 @@ function Detail() {
                     return resultBoolean // for await purpose
                 });
         }
-
         function fetchResult() {
             let success = fetchSampleData()
             if (success) {
@@ -46,7 +44,30 @@ function Detail() {
             } else {
             }
         }
+
+        function loadSoldSeats() {
+            let method = 'get' // ex. get | post | put | delete , etc
+            return axios[method](`https://localhost:44351/api/Order/GetByEventId/${id}`)
+                .then((response) => {
+                    // success
+                    //-> save response to state, notification
+                     // pass to finish
+                    setSoldSeats(response.data)
+                })
+                .catch((error) => {
+                    // failed
+                    //-> prepare, notify, handle error
+    
+                    return false // pass to finish
+                })
+                .then((resultBoolean) => {
+                    // do something after success or error
+    
+                    return resultBoolean // for await purpose
+                });
+        }
         fetchResult()
+        loadSoldSeats()
     }, [id]);
 
     //Helpers start
@@ -54,163 +75,125 @@ function Detail() {
     if (JSON.parse(localStorage.getItem('seats')) != null) {
         selectedSeats = JSON.parse(localStorage.getItem('seats'))
     }
-    console.log(selectedSeats);
     const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "AZN"
     });
-    //Helpers End
 
-    let obj = {
-        "id": "B-20",
-        "uuid": "eb2036e0-33c1-4872-879d-eef1d0e54657",
-        "label": "B-20",
-        "objectType": "Seat",
-        "labels": {
-            "own": "20",
-            "parent": "B",
-            "displayedLabel": "B-20"
-        },
-        "selected": true,
-        "category": {
-            "label": "Ground Floor",
-            "color": "#ED303D",
-            "accessible": false,
-            "key": 2,
-            "pricing": null,
-            "isFiltered": false,
-            "hasSelectableObjects": true
-        },
-        "selectable": true,
-        "disabledBySocialDistancingRules": false,
-        "status": "free",
-        "forSale": false,
-        "dataPerEvent": {
-            "smallTheatreEvent": {
-                "status": "free"
+    let seats = [
+        "A-1",
+        "A-2",
+        "A-3",
+        "A-4",
+        "A-5",
+        "A-6",
+        "A-7",
+        "A-8",
+        "A-9",
+        "A-10",
+        "A-11",
+        "A-12",
+        "A-13",
+        "A-14",
+        "A-15",
+        "A-16",
+        "A-17",
+        "A-18",
+        "A-19",
+        "A-20",
+        "A-21",
+        "A-22",
+        "A-23",
+        "A-24",
+        "A-25",
+        "A-26",
+        "A-27",
+        "A-28",
+        "A-29",
+        "A-30",
+
+        "B-1",
+        "B-2",
+        "B-3",
+        "B-4",
+        "B-5",
+        "B-6",
+        "B-7",
+        "B-8",
+        "B-9",
+        "B-10",
+        "B-11",
+        "B-12",
+        "B-13",
+        "B-14",
+        "B-15",
+        "B-16",
+        "B-17",
+        "B-18",
+        "B-19",
+        "B-20",
+        "B-21",
+        "B-22",
+        "B-23",
+        "B-24",
+        "B-25",
+        "B-26",
+        "B-27",
+        "B-28",
+        "B-29",
+        "B-30",
+
+        "C-1",
+        "C-2",
+        "C-3",
+        "C-4",
+        "C-5",
+        "C-6",
+        "C-7",
+        "C-8",
+        "C-9",
+        "C-10",
+        "C-11",
+        "C-12",
+        "C-13",
+        "C-14",
+        "C-15",
+        "C-16",
+        "C-17",
+        "C-18",
+        "C-19",
+        "C-20",
+        "C-21",
+        "C-22",
+        "C-23",
+        "C-24",
+        "C-25",
+        "C-26",
+        "C-27",
+        "C-28",
+        "C-29",
+        "C-30"
+
+
+    ];
+    
+    let soldSeats = [];
+    soldSeat.forEach(seat => {
+        soldSeats.push(seat.seatId)
+    });
+
+    if (soldSeats.length > 0) {
+        soldSeats.forEach(soldseat => {
+            for (let i = 0; i < seats.length; i++) {
+                if (seats[i] === soldseat) {
+                    seats.splice(i, 1)
+                }
             }
-        },
-        "inSelectableChannel": true,
-        "center": {
-            "x": 312.21,
-            "y": 231
-        },
-        "isOrphan": false,
-        "parent": {
-            "type": "row"
-        },
-        "seatId": "B-20",
-        "chart": {
-            "originalConfig": {
-                "onObjectSelected": "function (obj) {\n            // add the selected seat id to the array\n            selectedSeats.push(obj);\n            localStorage.setItem(\"seats\", JSON.stringify(selectedSeats));\n            console.log(selectedSeats);\n          }",
-                "onObjectDeselected": "function (obj) {\n            // remove the deselected seat id from the array\n            var index = -1;\n\n            for (let i = 0; i < selectedSeats.length; i++) {\n              if (selectedSeats[i].label === obj.label) {\n                index = i;\n              }\n            }\n\n            if (index !== -1) selectedSeats.splice(index, 1);\n            localStorage.setItem(\"seats\", JSON.stringify(selectedSeats));\n            console.log(selectedSeats);\n          }",
-                "workspaceKey": "publicDemoKey",
-                "selectedObjectsInputName": "selectedSeatsField",
-                "priceFormatter": "price => formatPrice(price)",
-                "openDraftDrawing": false,
-                "event": "smallTheatreEvent",
-                "language": "en",
-                "divId": "seathall"
-            },
-            "config": {
-                "workspaceKey": "publicDemoKey",
-                "selectedObjectsInputName": "selectedSeatsField",
-                "openDraftDrawing": false,
-                "event": "smallTheatreEvent",
-                "language": "en",
-                "divId": "seathall",
-                "configKeys": [
-                    "onObjectSelected",
-                    "onObjectDeselected",
-                    "workspaceKey",
-                    "selectedObjectsInputName",
-                    "priceFormatter",
-                    "openDraftDrawing",
-                    "event",
-                    "language",
-                    "divId"
-                ],
-                "embedType": "Renderer",
-                "v2Url": "https://api-eu.seatsio.net",
-                "CDNUrl": "https://cdn-eu.seatsio.net",
-                "CDNStaticFilesUrl": "https://cdn-eu.seatsio.net/static/version/v964",
-                "dataCollectorUrl": "https://data.seatsio.net",
-                "ablySubscribeKey": "hnsCTA.N9m7fg:y3JI9JQ1krTED-b9",
-                "priceFormatterUsed": true
-            },
-            "iframe": {},
-            "selectedObjectsInput": {},
-            "storage": {
-                "key": "seatsio"
-            },
-            "selectedSeats": [
-                "B-20"
-            ],
-            "selectedObjects": [
-                "B-20"
-            ],
-            "holdToken": null,
-            "reservationToken": null,
-            "requestIdCtr": 0,
-            "requestCallbacks": {},
-            "requestErrorCallbacks": {},
-            "state": "RENDERED",
-            "initialContainerDimensions": {
-                "width": 1536,
-                "height": 0
-            },
-            "domElementListener": {
-                "positionInViewportChangedListener": null,
-                "maxSize": 4096,
-                "lastDimensions": {
-                    "width": 1536,
-                    "height": 777
-                },
-                "lastPositionInViewport": {
-                    "top": 127.20000457763672,
-                    "bottom": 904.2000045776367,
-                    "right": 1536,
-                    "left": 0
-                },
-                "stopRequested": false,
-                "elementIsVisible": true,
-                "lastViewportWidth": 1536,
-                "lastViewportHeight": 526
-            },
-            "iframeElementListener": {
-                "widthChangedListener": null,
-                "dimensionsChangedListener": null,
-                "elementMadeVisibleListener": null,
-                "elementMadeInvisibleListener": null,
-                "maxSize": null,
-                "maxSizeExceededListener": null,
-                "lastDimensions": {
-                    "width": 1536,
-                    "height": 777
-                },
-                "lastPositionInViewport": {
-                    "top": 127.20000457763672,
-                    "bottom": 904.2000045776367,
-                    "right": 1536,
-                    "left": 0
-                },
-                "stopRequested": false,
-                "elementIsVisible": null,
-                "lastViewportWidth": 1536,
-                "lastViewportHeight": 526
-            },
-            "errorSentToDataCollector": false,
-            "sentWarnings": [],
-            "seatsioLoadedDeferred": {
-                "promise": {}
-            },
-            "containerVisible": {
-                "promise": {}
-            },
-            "renderingStart": "2022-06-04T15:55:15.526Z",
-            "loadingScreen": {}
-        }
+        });
     }
+
+    console.log(soldSeat);
+    //Helpers End
     return (
 
         <div>
@@ -274,22 +257,24 @@ function Detail() {
             <div className='mt-5 seathall' >
 
                 <Form>
-                    
-                    <SeatsioSeatingChart
-                        isObjectVisible= { function(obj) {
-                            if(obj.label !== 'B-20') {
-                                return true;
-                            }
-                            return false;
-                        }}
 
-                       
+                    <SeatsioSeatingChart
+                        isObjectVisible={
+                            function (obj) {
+                                if (obj.category.label === 'Ground Floor') {
+                                    return true;
+                                }
+                                return false;
+                            }
+                        }
+
                         onObjectSelected={
                             function (obj) {
                                 // add the selected seat id to the array
                                 selectedSeats.push(obj);
+
                                 localStorage.setItem("seats", JSON.stringify(selectedSeats));
-                                console.log(selectedSeats);
+
                             }
                         }
 
@@ -307,14 +292,18 @@ function Detail() {
                                 console.log(selectedSeats);
                             }
                         }
-                       
-                        
+                        // unavailableCategories= {[2]}
+                        selectionValidators={[
+                            { type: 'noOrphanSeats', highlight: false }
+                        ]}
+                        selectableObjects={seats}
                         workspaceKey="publicDemoKey"
                         id={`seathall`}
+
                         selectedObjectsInputName={'selectedSeatsField'}
                         priceFormatter={(price) => formatPrice(price)}
                         openDraftDrawing={false}
-                        event="smallTheatreEvent"
+                        event="smallTheatreEvent3"
                         region="eu"
                         language="en"
                     />
