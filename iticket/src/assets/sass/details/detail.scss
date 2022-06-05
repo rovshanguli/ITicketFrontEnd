@@ -29,6 +29,41 @@
     width: 100%;
     height: 100% !important;
   }
+  .deat {
+    position: absolute;
+    display: flex;
+    .pricedet {
+      position: absolute;
+      margin-left: 4.25rem;
+      width: 130px;
+      height: 64px;
+      font-weight: 700;
+      margin-bottom: 4.75rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255,221,0,var(--tw-bg-opacity));
+    }
+    .buthearth {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border-width: 3px;
+      margin-left: 13.25rem;
+      --tw-border-opacity: 1;
+      border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+      color: rgba(255, 255, 255, var(--tw-border-opacity));
+      pointer-events: all;
+      border-radius: 9999px;
+      background-color: inherit;
+      margin-bottom: 4.75rem;
+    }
+  }
 }
 .info-detail {
   display: flex;
