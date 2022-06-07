@@ -1,10 +1,46 @@
-import React from 'react'
-import { Button, Form } from 'react-bootstrap'
-import '../../../../assets/sass/basket/borderticket.scss'
+import React from 'react';
+import axios from 'axios';
+import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../../../../assets/sass/basket/borderticket.scss';
+import Swal from 'sweetalert2';
 
 function BorderTicket() {
 
-    const tickets = JSON.parse(localStorage.getItem('seats'));
+    let tickets = JSON.parse(localStorage.getItem('seats'));
+    
+    if (tickets == null) {
+        tickets = []
+    }
+
+    function orders(e) {
+        e.preventDefault();
+        tickets.forEach(ticket => {
+            createOrder()
+            async function createOrder() {
+                await axios.post('/api/Order/CreateOrder', {
+                    seatId: ticket.label,
+                    eventId: 7
+                }, { 'Content-Type': 'multipart/form-data' })
+                    .then(function (response) {
+                        Swal.fire(
+                            'Created',
+                            'success',
+                        )
+                    })
+                    .catch(function (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: '<a href="">Why do I have this issue?</a>'
+                        })
+
+                    });
+            }
+        });
+        localStorage.setItem("seats", JSON.stringify([]));
+    }
 
 
     return (
@@ -67,15 +103,15 @@ function BorderTicket() {
                                         <Form.Control type="email" placeholder="Email" />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicCheckbox">
-                                    
+
                                         <Form.Check type="checkbox" label=" Şərtləri və qaydaları qəbul edirəm." />
                                     </Form.Group>
 
-
-                                    <Button className='tickord' type="submit">
-                                        Sifariş Yarat
-                                    </Button>
-
+                                    <Link to='' onClick={(e) => orders(e)}>
+                                        <Button className='tickord' type="submit" >
+                                            Sifariş Yarat
+                                        </Button>
+                                    </Link>
 
                                 </Form>
                             </div>
