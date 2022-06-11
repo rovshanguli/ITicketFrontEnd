@@ -13,6 +13,7 @@ function KidsSlider() {
     }, []);
 
     const loadEvents = async () => {
+        
         const result = await axios.get("https://localhost:44351/api/event/GetByCateId/7");
         setEvent(result.data);
     }
@@ -88,10 +89,10 @@ function KidsSlider() {
                                                     {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
-                                                    •
+                                                    
                                                 </span>
                                                 <div className="venue-name">
-                                                    {card.hall}
+                                                  
                                                 </div>
                                             </div>
                                         </div>

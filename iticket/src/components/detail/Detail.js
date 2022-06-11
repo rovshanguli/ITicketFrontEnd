@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
+// import Favorites from "../pages/Favorites.js"
 import moment from 'moment';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
+
+
 import '../../assets/sass/details/detail.scss'
 import { Form } from 'react-bootstrap';
 
@@ -10,6 +14,11 @@ function Detail() {
     const { id } = useParams();
     const [data, setData] = useState();
     const [soldSeat, setSoldSeats] = useState([]);
+    const navigate = useNavigate();
+    const BorderTicket = async id => {
+        // console.log(id);
+    }
+    BorderTicket(id);
 
     // Implementation
     useEffect(() => {
@@ -390,6 +399,16 @@ function Detail() {
         "J-26",
         "J-27",
         "J-28"
+
+
+
+
+
+
+
+
+
+
     ];
 
     let soldSeats = [];
@@ -406,20 +425,24 @@ function Detail() {
             }
         });
     }
-    
-    
-    // let a = []
-    // for (let i = 1; i < 29; i++) {
-    //     a.push('J-' + i)
-    // }
+
+    let a = []
+    for (let i = 1; i < 29; i++) {
+        a.push('J-' + i)
+    }
+    // console.log(a);
     //Helpers End
+    const Favorites = async od => {
+        debugger
+        navigate('/favorites', { state: { id: od, name: 'salam blaaaaaaaaaaa' } })
+    }
     return (
         <div>
             <div className='event-image'>
                 <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
                 <div className='deat'>
                     <span className='pricedet'>{data?.price} ₼-dan</span>
-                    <button className='buthearth'><i className="far fa-heart"></i></button>
+                    <button className='buthearth' onClick={() => Favorites(data?.id)}><i className="far fa-heart"></i></button>
                 </div>
             </div>
             <div className='container'>
@@ -563,7 +586,7 @@ function Detail() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
 
     )
 }

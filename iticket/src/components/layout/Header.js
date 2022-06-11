@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Autocomplete, TextField } from '@mui/material';
-import '../../assets/sass/layout/header.scss'
+import Swal from 'sweetalert2';
+import '../../assets/sass/layout/header.scss';
+
+
+
+
 
 const style = {
   search: {
@@ -51,7 +55,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "300px",
+    width: "350px",
     height: "560px",
     bgcolor: 'background.paper',
     border: 'px solid #000',
@@ -64,26 +68,16 @@ const style = {
 
 
 function Header() {
-
-  const options = [
-    { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
-    { title: 'Goodfellas', year: 1990 },
-    { title: 'The Matrix', year: 1999 },
-    { title: 'Seven Samurai', year: 1954 },
-  ]
-
   //Prop for api start
   const [fullname, setFullname] = useState();
   const [username, setUsername] = useState();
   const [number, setNumber] = useState();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
-  const [search, setSearch] = useState();
   //Prop for Api End
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
-  console.log(email);
-  console.log(logpassword);
+  const [searchdata, setSearchdata] = useState([]);
 
   async function register(e) {
     e.preventDefault();
@@ -99,6 +93,7 @@ function Header() {
       })
       .catch(function (error) {
 
+
       });
   }
 
@@ -110,11 +105,34 @@ function Header() {
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
         localStorage.setItem("token", response.data);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Ugurla giris etdiz',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setLoginOpen(false)
       })
       .catch(function (error) {
       })
   }
-  
+
+  async function search(e) {
+    if (e.target.value == null) {
+      e.target.value = ""
+    }
+    await axios.get(`/api/Event/GetAllByName/${e.target.value}`, {
+
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+        setSearchdata(response.data)
+        console.log(searchdata);
+      })
+      .catch(function (error) {
+      })
+  }
+
 
   const [searchOpen, setSearchOpen] = React.useState(false);
   const handleSearchOpen = () => setSearchOpen(true);
@@ -125,8 +143,8 @@ function Header() {
     setForgotOpen(true)
     setLoginOpen(false)
   }
-  const handleForgotClose = () => setForgotOpen(false);
 
+  const handleForgotClose = () => setForgotOpen(false);
   const [loginOpen, setLoginOpen] = React.useState(false);
   const handleLoginOpen = () => setLoginOpen(true);
   const [registerOpen, setRegisterOpen] = React.useState(false);
@@ -136,16 +154,17 @@ function Header() {
   }
   const handleLoginClose = () => setLoginOpen(false);
   const handleRegisterClose = () => setRegisterOpen(false);
-
+  function closeSearch() {
+    setSearchOpen(false)
+    setSearchdata([])
+  }
 
   return (
     <div >
       <div className='' >
-
         <Navbar expand="lg">
           <Container fluid>
             <NavLink className="nav-link navba" to="/"><img className='logo' src={require('../../assets/img/logoiticket.png')} alt="logo" /></NavLink>
-
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -164,7 +183,7 @@ function Header() {
               <div className="basket d-flex justify-content-end">
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/favorites"><i className="far fa-heart"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span id='basketss'>0</span></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>0</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>
               </div>
             </Navbar.Collapse>
@@ -180,35 +199,27 @@ function Header() {
           >
             <Box sx={style.search} style={{ backgroundColor: 'white' }}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                <Autocomplete
-                  style={{ backgroundColor: 'white' }}
-                  id="grouped-demo"
-                  onChange={(e) => setSearch(e)}
-                  options={options}
-                  groupBy={(option) => option.firstLetter}
-                  getOptionLabel={(option) => option.title}
-                  sx={{
-                    width: 1300, ".MuiOutlinedInput-root": {
-                      "&:focus": {
-                        borderRadius: 50,
-                        borderColor: "red",
-                        borderWidth: 10,
-                        bgcolor: "white"
-                      }
-                    }
-                  }}
-                  renderInput={(params) => <TextField {...params} />}
-                />
+                <input type="text" style={{ width: '100%' }} onChange={(e) => search(e)} />
+                {searchdata.map(search => (
+                  <tr>
+                    <Link to={`/detail/${search.id}`} style={{textDecoration:'none'}} onClick={() => closeSearch()}>
+                      <td style={{ backgroundColor: 'white', width: '100vw' }} >
+                        {search.name}
+                      </td>
+                    </Link>
+                  </tr>
+                )
+
+
+
+                )}
               </Typography>
-
-
             </Box>
 
           </Modal>
         </div>
 
         <Container>
-
           {/* Login Modal */}
           <Modal
             open={loginOpen}
@@ -223,7 +234,7 @@ function Header() {
                   Login
                 </Typography>
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
-                  <Form  onSubmit={(e) => login(e)}>
+                  <Form onSubmit={(e) => login(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
                       <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
                     </Form.Group>
@@ -238,10 +249,7 @@ function Header() {
                 </Typography>
               </div>
             </Box>
-
           </Modal>
-
-
           {/* Forgot Pass Modal */}
           <Modal
             open={forgotOpen}
@@ -273,7 +281,6 @@ function Header() {
 
             </Box>
           </Modal>
-
           {/* Register Modal */}
           <Modal
             open={registerOpen}
@@ -310,7 +317,8 @@ function Header() {
                       <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 
-                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>{' '}
+                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>
+                    <Button className='regist' onClick={handleLoginOpen}>Geriyə</Button>
 
                   </Form>
 
@@ -325,9 +333,8 @@ function Header() {
 
 
       </div>
-      <script src={require('../detail/Detail')}></script>
     </div>
-  
+
   )
 }
 

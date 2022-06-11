@@ -14,7 +14,6 @@
   filter: drop-shadow(0 52px 94px rgba(0, 0, 0, 0.3));
   //   background: linear-gradient(0deg,rgba(0,0,0,.65),transparent);
 }
-
 .event-image {
   position: relative;
   padding-top: 1.25rem;
@@ -23,17 +22,14 @@
   padding-right: 1.25rem;
 
   background-color: inherit;
-
   .imag {
     border-radius: 1.25rem;
     width: 100%;
     height: 100% !important;
   }
-
   .deat {
     position: absolute;
     display: flex;
-
     .pricedet {
       position: absolute;
       margin-left: 4.25rem;
@@ -51,7 +47,6 @@
       --tw-bg-opacity: 1;
       background-color: rgba(255, 221, 0, var(--tw-bg-opacity));
     }
-
     .buthearth {
       position: absolute;
       width: 64px;
@@ -68,7 +63,6 @@
     }
   }
 }
-
 .info-detail {
   display: flex;
   align-items: center;
@@ -83,7 +77,6 @@
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
     rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-
   .icon-info {
     background-color: rgba(255, 221, 0, var(--tw-bg-opacity));
     display: flex;
@@ -96,21 +89,17 @@
     width: 80px;
     height: 80px;
     flex: 0 0 80px;
-
     .ico {
       font-size: 30px;
     }
   }
-
   .inf {
     padding-left: 1.75rem;
-
     .title {
       margin-bottom: 0.5rem;
       font-weight: 700;
       font-size: 22px;
     }
-
     .text {
       font-size: 1.225rem;
       line-height: 1.75rem;
@@ -120,12 +109,10 @@
     }
   }
 }
-
 .seathall {
   width: 100vw;
   background-color: #242333;
 }
-
 .infa {
   display: flex;
   align-items: center;
@@ -136,11 +123,8 @@
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
   border: 1px solid #e5e7eb;
-
   .loca {
     padding: 40px;
-
-   
 
     .hallo {
       font-size: 24px;
@@ -152,7 +136,6 @@
     }
   }
 }
-
 .imha {
   background-color: rgb(145, 145, 145);
   border-bottom-left-radius: 1.25rem;
@@ -162,47 +145,40 @@
   height: 400px;
   align-items: center;
   text-align: center;
-
   .roca {
     display: flex;
     justify-content: center;
-
     .hoca {
       background-color: white;
 
       border-radius: 1.25rem;
       width: 300px;
       height: 232px;
-
-      .halna {
+      .halna{
         display: flex;
         justify-content: space-between;
         width: 270px;
         margin: 13px;
-
-        .halla {
+        .halla{
           margin-top: 20px;
         }
       }
-
-      .prico {
+ 
+      .prico{
         display: flex;
         justify-content: space-between;
         width: 270px;
         margin: 13px;
       }
-
       .plusminus {
         display: flex;
         justify-content: center;
         text-align: center;
         margin: 13px;
         width: 270px;
-
-        .inpo {
+        .inpo{
           text-align: center;
         }
-
         .minus {
           background-color: #ffdd00;
           border-radius: none !important;
@@ -211,7 +187,6 @@
           width: 40px;
           height: 40px;
         }
-
         .plus {
           background-color: #ffdd00;
           border-radius: none !important;

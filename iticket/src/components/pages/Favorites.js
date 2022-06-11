@@ -1,29 +1,38 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useLocation } from 'react-router-dom'
 import Filter from "../layout/Filter";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 function Favorites() {
+
+
     const [items, setItems] = useState([]);
     const [visible, setVisible] = useState(3);
     const [hallid, setHallId] = useState();
     const [date, setDate] = useState('');
     const [price, setPrice] = useState([0, 100]);
+    const location = useLocation();
 
-
+    console.log(location.state.id);
     let startAndEnd = date.split('to');
-
+  
+console.log(items);
     const showMoreItems = () => {
         setVisible((prevValue) => prevValue + 3)
     }
+    const id = location.state.id
     useEffect(() => {
-        loadDatas();
-    }, []);
+        loadDatas(id);
+    }, [id]);
+   
 
-    const loadDatas = async () => {
-        const result = await axios.get("https://localhost:44351/api/Event/GetAllEvents")
+    const loadDatas = async (id) => {
+        id.preventDefault();
+        const result = await axios.get(`/api/Event/GetById/${id}`)
         setItems(result.data)
+        // ameaa.push(result.data)
     }
 
     const Detail = async id => {

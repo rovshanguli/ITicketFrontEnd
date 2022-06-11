@@ -32,7 +32,6 @@ function ConcertsSlider() {
         dots: true,
         infinite: true,
         arrows: true,
-
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 4,
@@ -97,10 +96,10 @@ function ConcertsSlider() {
                                                     {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
-                                                    •
+                                                    
                                                 </span>
                                                 <div className="venue-name">
-                                                    {card.hall}
+                                                   
                                                 </div>
                                             </div>
                                         </div>
