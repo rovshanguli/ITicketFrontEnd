@@ -135,7 +135,10 @@ function Header() {
 
 
   const [searchOpen, setSearchOpen] = React.useState(false);
-  const handleSearchOpen = () => setSearchOpen(true);
+  const handleSearchOpen = () => {
+    setSearchdata([])
+    setSearchOpen(true);
+  };
   const handleSearchClose = () => setSearchOpen(false);
 
   const [forgotOpen, setForgotOpen] = React.useState(false);
