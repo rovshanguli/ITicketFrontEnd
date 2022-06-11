@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
-
-
 import '../../assets/sass/details/detail.scss'
 import { Form } from 'react-bootstrap';
 
@@ -12,8 +10,6 @@ function Detail() {
     const { id } = useParams();
     const [data, setData] = useState();
     const [soldSeat, setSoldSeats] = useState([]);
-
-
 
     // Implementation
     useEffect(() => {
@@ -394,16 +390,6 @@ function Detail() {
         "J-26",
         "J-27",
         "J-28"
-
-
-
-
-
-
-
-
-
-
     ];
 
     let soldSeats = [];
@@ -420,12 +406,12 @@ function Detail() {
             }
         });
     }
-
-    let a = []
-    for (let i = 1; i < 29; i++) {
-        a.push('J-' + i)
-    }
-    console.log(a);
+    
+    
+    // let a = []
+    // for (let i = 1; i < 29; i++) {
+    //     a.push('J-' + i)
+    // }
     //Helpers End
     return (
         <div>
@@ -577,7 +563,7 @@ function Detail() {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
 
     )
 }

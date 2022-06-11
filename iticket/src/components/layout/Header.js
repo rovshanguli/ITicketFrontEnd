@@ -8,10 +8,6 @@ import Modal from '@mui/material/Modal';
 import { Autocomplete, TextField } from '@mui/material';
 import '../../assets/sass/layout/header.scss'
 
-
-
-
-
 const style = {
   search: {
     position: 'absolute',
@@ -82,52 +78,43 @@ function Header() {
   const [number, setNumber] = useState();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
+  const [search, setSearch] = useState();
   //Prop for Api End
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
-
+  console.log(email);
+  console.log(logpassword);
 
   async function register(e) {
-    debugger
     e.preventDefault();
     await axios.post('/api/account/register', {
-
-
       Email: mail,
       Password: password,
       FullName: fullname,
       UserName: username,
       PhoneNumber: number,
-
-
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
 
       })
       .catch(function (error) {
 
-
       });
-
-
-
   }
 
   async function login(e) {
-debugger
+    e.preventDefault();
     await axios.post(`/api/Account/Login`, {
       Email: email,
       Password: logpassword
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
-
+        localStorage.setItem("token", response.data);
       })
       .catch(function (error) {
-
-
       })
   }
-
+  
 
   const [searchOpen, setSearchOpen] = React.useState(false);
   const handleSearchOpen = () => setSearchOpen(true);
@@ -177,7 +164,7 @@ debugger
               <div className="basket d-flex justify-content-end">
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/favorites"><i className="far fa-heart"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>0</span></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span id='basketss'>0</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>
               </div>
             </Navbar.Collapse>
@@ -190,13 +177,13 @@ debugger
             onClose={handleSearchClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-
           >
             <Box sx={style.search} style={{ backgroundColor: 'white' }}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 <Autocomplete
                   style={{ backgroundColor: 'white' }}
                   id="grouped-demo"
+                  onChange={(e) => setSearch(e)}
                   options={options}
                   groupBy={(option) => option.firstLetter}
                   getOptionLabel={(option) => option.title}
@@ -236,26 +223,20 @@ debugger
                   Login
                 </Typography>
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
-                  <Form onSubmit={(e) => login(e)}>
+                  <Form  onSubmit={(e) => login(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
-
                       <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
-
                     </Form.Group>
                     <Form.Group className="mb-3 mt-3" controlId="formBasicPassword">
-
                       <Form.Control outline="yellow" type="password" onChange={(e) => setLogpassword(e.target.value)} placeholder="Password" />
                     </Form.Group>
                     <Button className='login' onClick={handleForgotOpen}>Unutmusunuz?</Button>
                     <Button className="warning login mt-3" size="sm" type="submit"> Daxil Ol</Button>{' '}
-
                   </Form>
                   <p className='mt-5'>İTicket'də yenisiz?</p>
                   <Button className='regist' onClick={handleRegisterOpen}>Qeydiyyatdan Keçin</Button>
                 </Typography>
               </div>
-
-
             </Box>
 
           </Modal>
@@ -344,8 +325,9 @@ debugger
 
 
       </div>
+      <script src={require('../detail/Detail')}></script>
     </div>
-
+  
   )
 }
 
