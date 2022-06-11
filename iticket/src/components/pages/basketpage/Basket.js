@@ -8,7 +8,6 @@ function Basket() {
         <div>
             {/* <NotTicket/> */}
             <BorderTicket />
-
         </div>
 
     )

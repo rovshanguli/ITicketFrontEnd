@@ -15,10 +15,7 @@ function Detail() {
     const [data, setData] = useState();
     const [soldSeat, setSoldSeats] = useState([]);
     const navigate = useNavigate();
-    const BorderTicket = async id => {
-        // console.log(id);
-    }
-    BorderTicket(id);
+    
 
     // Implementation
     useEffect(() => {
@@ -836,8 +833,12 @@ function Detail() {
 
     //Helpers End
     const Favorites = async od => {
-        debugger
         navigate('/favorites', { state: { id: od, name: 'salam blaaaaaaaaaaa' } })
+    }
+
+    let seatsobj ={
+        id: id,
+        seats: selectedSeats
     }
     return (
         <div>
@@ -901,12 +902,11 @@ function Detail() {
             <div className='mt-5 seathall' >
                 <Form>
                     <SeatsioSeatingChart
-
                         onObjectSelected={
                             function (obj) {
                                 // add the selected seat id to the array
-                                selectedSeats.push(obj);
-                                localStorage.setItem("seats", JSON.stringify(selectedSeats));
+                                selectedSeats.push(obj.label);
+                                localStorage.setItem("seats", JSON.stringify(seatsobj));
                             }
                         }
                         pricing={[
@@ -939,7 +939,7 @@ function Detail() {
                                 // remove the deselected seat id from the array
                                 var index = -1;
                                 for (let i = 0; i < selectedSeats.length; i++) {
-                                    if (selectedSeats[i].label === obj.label) {
+                                    if (selectedSeats[i] === obj.label) {
                                         index = i
                                     }
                                 }

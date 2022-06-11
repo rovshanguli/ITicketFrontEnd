@@ -8,25 +8,27 @@ import Swal from 'sweetalert2';
 function BorderTicket() {
 
     let tickets = JSON.parse(localStorage.getItem('seats'));
-    
-    if (tickets == null) {
-        tickets = []
+    let seats = tickets.seats
+    console.log(seats);
+    if (seats == null) {
+        seats = []
     }
 
     function orders(e) {
         e.preventDefault();
-        tickets.forEach(ticket => {
+        seats.forEach(ticket => {
             createOrder()
             async function createOrder() {
                 await axios.post('/api/Order/CreateOrder', {
-                    seatId: ticket.label,
-                    eventId: 7
+                    seatId: ticket,
+                    eventId: tickets.id
                 }, { 'Content-Type': 'multipart/form-data' })
                     .then(function (response) {
                         Swal.fire(
                             'Created',
                             'success',
                         )
+                        localStorage.setItem("seats", JSON.stringify([]));
                     })
                     .catch(function (error) {
                         Swal.fire({
@@ -39,7 +41,7 @@ function BorderTicket() {
                     });
             }
         });
-        localStorage.setItem("seats", JSON.stringify([]));
+        
     }
 
 
@@ -51,8 +53,8 @@ function BorderTicket() {
                 </div>
                 <div className="row">
                     <div className="col-lg-8 col-md-8 col-sm-12">
-                        {tickets.map(ticket =>
-                            <div key={ticket.label} className="col-12">
+                        {seats.map(seat =>
+                            <div key={seat} className="col-12">
                                 <div className='war'>
                                     <div className='ticket d-flex mt-5 '>
                                         <div className='tickdeta'>
@@ -62,7 +64,7 @@ function BorderTicket() {
                                             <div>
                                                 <div><span className='spans'>Azərsun Arena</span><span className='spans'>21.05.2022</span><span className='spans'>-19:30</span></div>
                                                 <div><b className='tickname'>Qarabağ FK – Neftçi PFK</b></div>
-                                                <div className='seattick'><p>Sektor:H1</p> <p>{ticket.label}</p> <p>Yer: 15</p></div>
+                                                <div className='seattick'><p>Sektor:H1</p> <p>{seat}</p> <p>Yer: 15</p></div>
                                             </div>
                                         </div>
                                         <div className='tickbuttons'>
