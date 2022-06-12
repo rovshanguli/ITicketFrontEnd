@@ -89,7 +89,14 @@ function Header() {
       PhoneNumber: number,
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
-
+        setRegisterOpen(false)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Zəhmət olmasa emailinizi yoxlayın',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
       .catch(function (error) {
 
@@ -212,9 +219,6 @@ function Header() {
                     </Link>
                   </tr>
                 )
-
-
-
                 )}
               </Typography>
             </Box>
@@ -319,13 +323,9 @@ function Header() {
                     <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
                       <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
-
                     <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>
                     <Button className='regist' onClick={handleLoginOpen}>Geriyə</Button>
-
                   </Form>
-
-
                 </Typography>
               </div>
 

@@ -1,19 +1,21 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../../../assets/sass/basket/borderticket.scss';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 function BorderTicket() {
 
+    const [event, setEvent] = useState();
     let tickets = JSON.parse(localStorage.getItem('seats'));
     let seats = tickets.seats
-    console.log(seats);
+    
     if (seats == null) {
         seats = []
     }
-
+    
     function orders(e) {
         e.preventDefault();
         seats.forEach(ticket => {
@@ -44,7 +46,42 @@ function BorderTicket() {
         
     }
 
+    useEffect(() => {
+        function fetchSampleData() {
+            let method = 'get' // ex. get | post | put | delete , etc
+            return axios[method](`/api/Event/GetById/${tickets.id}`)
+                .then((response) => {
+                    // success
+                    //-> save response to state, notification
+                    setEvent(response.data) // pass to finish
+                })
+                .catch((error) => {
+                    // failed
+                    //-> prepare, notify, handle error
 
+                    return false // pass to finish
+                })
+                .then((resultBoolean) => {
+                    // do something after success or error
+
+                    return resultBoolean // for await purpose
+                });
+        }
+
+        function fetchResult() {
+            let success = fetchSampleData()
+            if (success) {
+                setEvent(success.data)
+            } else {
+            }
+        }
+
+        fetchResult()
+
+        
+        
+    }, [tickets.id]);
+    
     return (
         <div className='container'>
             <div className="row mt-5 ticketsonline">
@@ -59,17 +96,17 @@ function BorderTicket() {
                                     <div className='ticket d-flex mt-5 '>
                                         <div className='tickdeta'>
                                             <div className='imagetick'>
-                                                <img className='tickimage' src="https://cdn.iticket.az/event/poster_square/7kDqsUsbCSkwH53iswfcKTTMwtidBegKNmysgLt7.jpg" alt="" />
+                                                <img style={{height:'100%',minHeight:'-webkit-fill-available'}} className='tickimage imag' src={`data:image/jpeg;base64,${event?.detailImage}`} alt=""  />
                                             </div>
                                             <div>
-                                                <div><span className='spans'>Azərsun Arena</span><span className='spans'>21.05.2022</span><span className='spans'>-19:30</span></div>
-                                                <div><b className='tickname'>Qarabağ FK – Neftçi PFK</b></div>
-                                                <div className='seattick'><p>Sektor:H1</p> <p>{seat}</p> <p>Yer: 15</p></div>
+                                                <div><span className='spans'>{event?.hall.name}</span><span className='spans'>{moment(event?.date).subtract(10, 'days').calendar()}</span><span className='spans'>-19:30</span></div>
+                                                <div><b className='tickname'>{event?.name}</b></div>
+                                                <div className='seattick'><p>Sira:{seat.substring(0, 1)}</p><p>Yer: {seat.substring(2)}</p></div>
                                             </div>
                                         </div>
                                         <div className='tickbuttons'>
                                             <div className='tickbuton'>
-                                                <b> 5 ₼</b>
+                                                <b> {event?.price} ₼</b>
                                             </div>
                                             <button className='delet'><i className="far fa-trash-alt"></i></button>
                                         </div>
