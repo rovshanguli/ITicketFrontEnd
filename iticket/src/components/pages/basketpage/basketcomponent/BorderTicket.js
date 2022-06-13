@@ -10,11 +10,14 @@ function BorderTicket() {
 
     const [event, setEvent] = useState();
     let tickets = JSON.parse(localStorage.getItem('seats'));
+    let token = JSON.parse(localStorage.getItem('token'));
+
+    if(token != null){
+        
+    }
     let seats = tickets.seats
     
-    if (seats == null) {
-        seats = []
-    }
+    
     
     function orders(e) {
         e.preventDefault();
@@ -81,7 +84,10 @@ function BorderTicket() {
         
         
     }, [tickets.id]);
-    
+
+    if (seats == null) {
+        seats = []
+    }
     return (
         <div className='container'>
             <div className="row mt-5 ticketsonline">

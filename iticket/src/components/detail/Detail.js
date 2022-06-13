@@ -833,7 +833,7 @@ function Detail() {
 
     //Helpers End
     const Favorites = async od => {
-        navigate('/favorites', { state: { id: od, name: 'salam blaaaaaaaaaaa' } })
+        navigate('/favorites', { state: { id: od, name: 'salam' } })
     }
 
     let seatsobj ={
@@ -916,8 +916,8 @@ function Detail() {
                                     {
                                         ticketType: "event",
                                         price: data?.price,
-                                        label: "For event",
-                                        description: "Salam meleyki"
+                                        label: `${data?.name}`,
+                                        description: "Səbətə əlavə olunsun?"
                                     }
                                 ]
                             },
@@ -927,8 +927,8 @@ function Detail() {
                                     {
                                         ticketType: "event",
                                         price: data?.price + 20,
-                                        label: "For event",
-                                        description: "Salam meleyki"
+                                        label: `${data?.name}`,
+                                        description: "Səbətə əlavə olunsun?"
                                     }
                                 ]
                             }
@@ -944,7 +944,7 @@ function Detail() {
                                     }
                                 }
                                 if (index !== -1) selectedSeats.splice(index, 1);
-                                localStorage.setItem("seats", JSON.stringify(selectedSeats));
+                                localStorage.setItem("seats", JSON.stringify(seatsobj));
                                 console.log(selectedSeats);
                             }
                         }
