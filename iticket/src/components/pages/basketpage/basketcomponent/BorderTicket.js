@@ -10,15 +10,30 @@ function BorderTicket() {
 
     const [event, setEvent] = useState();
     let tickets = JSON.parse(localStorage.getItem('seats'));
-    let token = JSON.parse(localStorage.getItem('token'));
+    let token = localStorage.getItem('token');
 
+    function parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    
+        return JSON.parse(jsonPayload);
+    };
+    let user;
     if(token != null){
-        
+        let usermail = parseJwt(token).sub[1];
+        axios.get(`api/Account/GetUserByEmail/${usermail}`)
+        .then((res) =>
+        {
+            user=res
+            
+        })
     }
+
+
     let seats = tickets.seats
-    
-    
-    
     function orders(e) {
         e.preventDefault();
         seats.forEach(ticket => {
@@ -88,6 +103,7 @@ function BorderTicket() {
     if (seats == null) {
         seats = []
     }
+    console.log(user);
     return (
         <div className='container'>
             <div className="row mt-5 ticketsonline">
@@ -129,9 +145,7 @@ function BorderTicket() {
                                 <Form className='mt-5'>
 
                                     <Form.Group className="mb-4" controlId="formBasicText">
-
-                                        <Form.Control type="text" placeholder="Ad" />
-
+                                        <Form.Control type="text" placeholder="Ad" defaultValue={user?.fullName} />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicText">
 
