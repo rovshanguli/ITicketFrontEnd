@@ -846,7 +846,7 @@ function Detail() {
                 <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
                 <div className='deat'>
                     <span className='pricedet'>{data?.price} ₼-dan</span>
-                    <button className='buthearth' onClick={() => Favorites(data?.id)}><i className="far fa-heart"></i></button>
+                    <button className='buthearth' onClick={() => localStorage.setItem('basket',data?.id)}><i className="far fa-heart"></i></button>
                 </div>
             </div>
             <div className='container'>

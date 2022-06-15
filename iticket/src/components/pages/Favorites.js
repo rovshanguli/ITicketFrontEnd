@@ -62,7 +62,7 @@ console.log(items);
             <div className='row '>
 
                 {result.slice(0, visible).map(card =>
-                    <div className="col-4 mb-3" key={card.id}>
+                    <div className="col-4 mb-3" key={card?.id}>
                         <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                             <div className="relative h-full">
                                 <div className="image">
