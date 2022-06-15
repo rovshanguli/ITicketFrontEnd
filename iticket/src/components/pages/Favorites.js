@@ -5,12 +5,11 @@ import moment from 'moment';
 
 function Favorites() {
 
-    console.log('sss');
-
     const [visible, setVisible] = useState(3);
     const [hallid, setHallId] = useState();
     const [date, setDate] = useState('');
     const [price, setPrice] = useState([0, 100]);
+    const [forrender,setForrender] = useState();
 
     let startAndEnd = date.split('to');
 
@@ -25,7 +24,7 @@ function Favorites() {
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
     let result = favorites;
     if (hallid != null) {
-        result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
+        result = result?.filter(item => parseInt(item.hallId) === parseInt(hallid))
     }
 
     if (date.length !== 0) {
@@ -39,7 +38,10 @@ function Favorites() {
     function clearFavorites(e) {
         e.preventDefault()
         localStorage.removeItem('basket')
-        
+        localStorage.setItem('basket',JSON.stringify([]))
+        result = JSON.parse(localStorage.getItem('basket'));
+        setForrender('');
+        console.log(forrender);
     }
     return (
         <div className='container'>
