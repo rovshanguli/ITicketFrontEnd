@@ -29,17 +29,21 @@ import Order from './components/pages/basketpage/basketcomponent/Order';
 import LoadMore from './components/pages/LoadMore';
 import Favorites from './components/pages/Favorites';
 import Tourism from './components/pages/Tourism';
+import ForgotPassword from './components/pages/profile/ForgotPassword';
 
 
 
 function App() {
+  if(localStorage.getItem('basket') == null){
+    localStorage.setItem('basket',JSON.stringify([]))
+  }
   return (
-
+    
     <Router>
       <div>
         <Header />
 
-
+    
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/allevents" element={<AllEvents />} />
@@ -65,6 +69,7 @@ function App() {
           <Route exact path="/order" element={<Order />} />
           <Route exact path="/loadmore" element={<LoadMore />} />
           <Route exact path="/favorites" element={<Favorites />} />
+          <Route exact path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
         <Footer />
       </div>

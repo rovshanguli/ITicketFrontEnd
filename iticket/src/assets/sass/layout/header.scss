@@ -1,7 +1,6 @@
 .logo {
   width: 100px !important;
 }
-
 .css-2sptk0 {
   background-color: inherit !important;
 }
@@ -22,7 +21,6 @@
   transform-origin: 0 0;
   z-index: -1;
 }
-
 .form-control:focus {
   box-shadow: 0 0 0 0.25rem rgb(255 255 0);
 }
@@ -31,34 +29,27 @@
   line-height: 0.7rem;
   width: 100%;
 }
-
 .login:hover {
   background-color: #92b4ec;
 }
-
 .regist {
   line-height: 0.7rem;
   width: 100%;
 }
-
 .regist:hover {
   background-color: #92b4ec;
 }
-
 .nav-link {
   color: rgba(0, 0, 0, 0.55);
 }
-
 .nav-link:focus {
   color: rgba(0, 0, 0, 0.55);
 }
-
 .nav-link::before {
   transition: 0.5s;
   color: #92b4ec;
   border: none;
 }
-
 .nav-link:hover {
   color: #92b4ec !important;
   //   box-shadow: 0 0 5px green;
@@ -71,7 +62,6 @@
 
   //   text-shadow: 0 0 5px green;
 }
-
 .container {
   .Navbar {
     position: absolute;
@@ -82,42 +72,37 @@
 .modal-size {
   overflow: hidden;
 }
-
 .tabe {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
 
   width: 95vw;
+ 
 
-
-
+  
   .tre:nth-child(even) {
     background-color: gray;
-
-
+  
+   
   }
-
   .linko {
     text-decoration: none;
     color: #92b4ec;
-
     .tabde {
       background-color: white;
       width: 97vw;
       border: 1px solid #ddd;
       padding: 8px;
     }
-
     .tabde:hover {
       background-color: #ddd;
     }
   }
-
   .linko :hover {
     text-decoration: none;
     color: #92b4ec;
   }
-
+ 
 }
 
 .searchbar {
@@ -126,3 +111,5 @@
   border-radius: 1.25rem;
 
 }
+
+

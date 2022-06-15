@@ -118,7 +118,7 @@ function BorderTicket() {
                                     <div className='ticket d-flex mt-5 '>
                                         <div className='tickdeta'>
                                             <div className='imagetick'>
-                                                <img style={{height:'100%',minHeight:'-webkit-fill-available'}} className='tickimage imag' src={`data:image/jpeg;base64,${event?.detailImage}`} alt=""  />
+                                                <img style={{ height: '100%', minHeight: '-webkit-fill-available' }} className='tickimage imag' src={`data:image/jpeg;base64,${event?.detailImage}`} alt="" />
                                             </div>
                                             <div>
                                                 <div><span className='spans'>{event?.hall.name}</span><span className='spans'>{moment(event?.date).subtract(10, 'days').calendar()}</span><span className='spans'>-19:30</span></div>
@@ -145,32 +145,34 @@ function BorderTicket() {
                                 <Form className='mt-5'>
 
                                     <Form.Group className="mb-4" controlId="formBasicText">
-                                        <Form.Control type="text" placeholder="Ad" defaultValue={user?.fullName} />
+                                    <Form.Label> Ad və Soy Ad</Form.Label>
+                                        <Form.Control type="text" defaultValue={user?.fullName}  />
+
                                     </Form.Group>
-                                    <Form.Group className="mb-4" controlId="formBasicText">
+                                    {/* <Form.Group className="mb-4" controlId="formBasicText">
 
                                         <Form.Control type="text" placeholder="Soy Ad" />
 
-                                    </Form.Group>
+                                    </Form.Group> */}
 
                                     <Form.Group className="mb-4" controlId="formBasicNumber">
-
-                                        <Form.Control type="number" placeholder="Telefon Nömrəsi" />
+                                    <Form.Label> Telefon Nömrəsi</Form.Label>
+                                        <Form.Control type="number"  />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicEmail">
-
-                                        <Form.Control type="email" placeholder="Email" />
+                                    <Form.Label> Email</Form.Label>
+                                        <Form.Control type="email" defaultValue={user?.email}   />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicCheckbox">
 
                                         <Form.Check type="checkbox" label=" Şərtləri və qaydaları qəbul edirəm." />
                                     </Form.Group>
-
-                                    <Link to='' onClick={(e) => orders(e)}>
-                                        <Button className='tickord' type="submit" >
-                                            Sifariş Yarat
-                                        </Button>
-                                    </Link>
+                                    
+                                    <Link to='' onClick={(e) => orders(e)}> 
+                                    <Button className='tickord' type="submit" >
+                                        Sifariş Yarat
+                                    </Button>
+                                     </Link> 
 
                                 </Form>
                             </div>

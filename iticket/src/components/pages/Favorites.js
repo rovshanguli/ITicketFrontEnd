@@ -1,46 +1,29 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useLocation } from 'react-router-dom'
+import { useState } from "react";
 import Filter from "../layout/Filter";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 function Favorites() {
 
+    console.log('sss');
 
-    const [items, setItems] = useState([]);
     const [visible, setVisible] = useState(3);
     const [hallid, setHallId] = useState();
     const [date, setDate] = useState('');
     const [price, setPrice] = useState([0, 100]);
-    const location = useLocation();
 
-    console.log(location.state.id);
     let startAndEnd = date.split('to');
-  
-console.log(items);
+
+
     const showMoreItems = () => {
         setVisible((prevValue) => prevValue + 3)
     }
-    const id = location.state.id
-    useEffect(() => {
-        loadDatas(id);
-    }, [id]);
-   
 
-    const loadDatas = async (id) => {
-        id.preventDefault();
-        const result = await axios.get(`/api/Event/GetById/${id}`)
-        setItems(result.data)
-        // ameaa.push(result.data)
-    }
 
-    const Detail = async id => {
-        console.log(id);
-    }
+    let favorites = JSON.parse(localStorage.getItem('basket'));
 
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
-    let result = items;
+    let result = favorites;
     if (hallid != null) {
         result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
     }
@@ -53,17 +36,26 @@ console.log(items);
         result = result.filter(item => item.price > price[0] && item.price < price[1])
     }
 
+    function clearFavorites(e) {
+        e.preventDefault()
+        localStorage.removeItem('basket')
+        
+    }
     return (
         <div className='container'>
-            <h3 className='mt-5'>Seçilmişlər</h3>
+            <div>
+                <h3 className='mt-5'>Seçilmişlər</h3>
+                <button onClick={(e) => clearFavorites(e)}>Temizle</button>
+            </div>
             <div className='mt-5'>
                 <Filter hallId={setHallId} date={setDate} setPrice={setPrice} getPrice={price} />
             </div>
             <div className='row '>
 
-                {result.slice(0, visible).map(card =>
-                    <div className="col-4 mb-3" key={card?.id}>
-                        <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+
+                {result?.slice(0, visible).map(card =>
+                    <div className="col-4 mb-3" key={card.id}>
+                        <Link to={`/detail/${card.id}`} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                             <div className="relative h-full">
                                 <div className="image">
                                     <img src={`data:image/jpeg;base64,${card.backImage}`} data-src={`data:image/jpeg;base64,${card.backImage}`} alt="" className="bg ls-is-cached lazyloaded" />

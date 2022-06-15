@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // import Favorites from "../pages/Favorites.js"
 import moment from 'moment';
@@ -14,8 +14,7 @@ function Detail() {
     const { id } = useParams();
     const [data, setData] = useState();
     const [soldSeat, setSoldSeats] = useState([]);
-    const navigate = useNavigate();
-    
+
 
     // Implementation
     useEffect(() => {
@@ -830,13 +829,44 @@ function Detail() {
         });
     }
 
-
-    //Helpers End
-    const Favorites = async od => {
-        navigate('/favorites', { state: { id: od, name: 'salam' } })
+    let basket = JSON.parse(localStorage.getItem('basket'))
+    if (basket == null) {
+        localStorage.setItem('basket', JSON.stringify([]))
+    } else {
+        basket.forEach(element => {
+            if (data?.id === element.id) {
+                let hearth = document.getElementById('hearth')
+                hearth.style.color = 'yellow'
+            }
+        });
     }
 
-    let seatsobj ={
+    function addBasket(data) {
+        let count = 0;
+        let basket = JSON.parse(localStorage.getItem('basket'))
+        if (basket != null) {
+            for (let i = 0; i < basket.length; i++) {
+                if (parseInt(basket[i].id) === parseInt(data.id)) {
+                    basket.splice(i, 1)
+                    let hearth = document.getElementById('hearth')
+                    hearth.style.color = ''
+                    count++
+                }
+            }
+        }
+        if (count === 0) {
+            basket.push(data)
+            let hearth = document.getElementById('hearth')
+            hearth.style.color = 'yellow'
+        }
+        localStorage.setItem('basket', JSON.stringify(basket))
+
+    }
+
+    //Helpers End
+
+
+    let seatsobj = {
         id: id,
         seats: selectedSeats
     }
@@ -846,7 +876,7 @@ function Detail() {
                 <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
                 <div className='deat'>
                     <span className='pricedet'>{data?.price} ₼-dan</span>
-                    <button className='buthearth' onClick={() => localStorage.setItem('basket',data?.id)}><i className="far fa-heart"></i></button>
+                    <button className='buthearth' onClick={() => addBasket(data)} ><i style={{fontSize:'30px'}} id='hearth' className="far fa-heart"></i></button>
                 </div>
             </div>
             <div className='container'>

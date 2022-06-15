@@ -39,24 +39,24 @@ function Order() {
 
                         <div className=''>
                             <Form.Group className="mb-3 cardcode" controlId="formBasicNumberCode">
-                              
+
                                 <Form.Control type="number" placeholder="XXXX-XXXX-XXXX-XXXX" />
 
                             </Form.Group>
-                           
+
                         </div>
                         <div className='sendtick'>
-                                <div>
-                                <Button  className='canceltick' type="submit">
+                            <div>
+                                <Button className='canceltick' type="submit">
                                     Ləğv Et
                                 </Button>
-                                </div>
-                          
-                                <div>
-                                <Button  className='endtick' type="submit">
+                            </div>
+
+                            <div>
+                                <Button className='endtick' type="submit">
                                     Sifarişi Tamamla
                                 </Button></div>
-                            </div>
+                        </div>
 
                     </div>
 

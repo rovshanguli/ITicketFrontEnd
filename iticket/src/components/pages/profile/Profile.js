@@ -19,12 +19,12 @@ function Profile() {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicText">
-                <Form.Label className='proflab'>Ad</Form.Label>
+                <Form.Label className='proflab'>FullName</Form.Label>
                 <Form.Control type="text" placeholder="" />
               </Form.Group>
               
               <Form.Group className="mb-3" controlId="formBasicText">
-                <Form.Label className='proflab'>Soy Ad</Form.Label>
+                <Form.Label className='proflab'>UserName</Form.Label>
                 <Form.Control type="text" placeholder="" />
               </Form.Group>
 
@@ -38,15 +38,9 @@ function Profile() {
               
               </Form.Group>
 
-              <Form.Group className="mb-3 birthday" controlId="formBasicDatetime">
-                <Form.Label className='proflab'>Doğum Günü</Form.Label>
-                <Form.Control  type="date" placeholder="" />
-              </Form.Group>
+             
               
-              <Form.Group className="mb-3" controlId="formBasicText">
-                <Form.Label className='proflab'>Cins</Form.Label>
-                <Form.Control type="text" placeholder="" />
-              </Form.Group>
+            
             </div>
 
             <div className='mt-4 '>

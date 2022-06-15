@@ -28,9 +28,7 @@ function AllEvents() {
         setItems(result.data)
     }
 
-    const Detail = async id => {
-        console.log(id);
-    }
+    
 
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
     let result = items;
@@ -56,7 +54,7 @@ function AllEvents() {
 
                 {result.slice(0, visible).map(card =>
                     <div className="col-4 mb-3" key={card.id}>
-                        <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+                        <Link to={`/detail/${card.id}`}  className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                             <div className="relative h-full">
                                 <div className="image">
                                     <img src={`data:image/jpeg;base64,${card.backImage}`} data-src={`data:image/jpeg;base64,${card.backImage}`} alt="" className="bg ls-is-cached lazyloaded" />

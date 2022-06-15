@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../assets/sass/layout/filter.scss';
 import "flatpickr/dist/themes/material_green.css";
 import Flatpickr from "react-flatpickr";
@@ -56,10 +56,10 @@ function Filter(props) {
         <div>
             <div className="row">
                 <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center placearea">
-                    <div className='filter' style={{width:'100%'}}>
-                        <div className='price-range-view' style={{width:'100%'}}>
+                    <div className='filter' style={{ width: '100%' }}>
+                        <div className='price-range-view' style={{ width: '100%' }}>
 
-                            <select defaultValue="" onChange={(e) => props.hallId(e.target.value)} style={{width:'100%'}} >
+                            <select defaultValue="" onChange={(e) => props.hallId(e.target.value)} style={{ width: '100%' }} >
                                 <option className='place' value="" disabled hidden>
                                     Məkanı Seçin
                                 </option>

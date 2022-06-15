@@ -78,6 +78,7 @@ function Header() {
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
   const [searchdata, setSearchdata] = useState([]);
+  const [forgotmail, setForgotmail]= useState();
 
   async function register(e) {
     e.preventDefault();
@@ -140,6 +141,28 @@ function Header() {
       })
   }
 
+  async function resetpassword(e) {
+    e.preventDefault();
+    await axios.post('/api/Account/ForgotPassword', {
+      Email: forgotmail,
+     
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+        setRegisterOpen(false)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Zəhmət olmasa emailinizi yoxlayın',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
+      .catch(function (error) {
+
+
+      });
+  }
+
 
   const [searchOpen, setSearchOpen] = React.useState(false);
   const handleSearchOpen = () => {
@@ -168,6 +191,9 @@ function Header() {
     setSearchOpen(false)
     setSearchdata([])
   }
+
+ 
+
 
   return (
     <div >
@@ -274,10 +300,10 @@ function Header() {
                   Şifrəni Sıfırla
                 </Typography>
                 <Typography component='span' id="modal-modal-description" sx={{ mt: 2 }}>
-                  <Form>
+                  <Form onSubmit={(e) => resetpassword(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicForgotEmail">
 
-                      <Form.Control type="email" placeholder="Enter email" />
+                      <Form.Control type="email" onChange={(e)=> setForgotmail(e.target.value)} placeholder="Enter email" />
 
                     </Form.Group>
 
