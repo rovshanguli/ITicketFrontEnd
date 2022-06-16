@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import { decrease } from '../../redux/stateSlice';
+
 
 // import Favorites from "../pages/Favorites.js"
 import moment from 'moment';
@@ -863,6 +866,9 @@ function Detail() {
 
     }
 
+    const dispatch = useDispatch();
+
+
     //Helpers End
 
 
@@ -934,6 +940,7 @@ function Detail() {
                     <SeatsioSeatingChart
                         onObjectSelected={
                             function (obj) {
+                                dispatch(decrease())
                                 // add the selected seat id to the array
                                 selectedSeats.push(obj.label);
                                 localStorage.setItem("seats", JSON.stringify(seatsobj));
@@ -994,6 +1001,48 @@ function Detail() {
                         language="tr"
                     />
                 </Form>
+            </div>
+            <div className="container">
+                <div className="row infa mt-5">
+                    <div className='col-lg-6 col-md-9 col-sm-12 loca'>
+                        <h4 className='hallside'>Məkan</h4>
+                        <h6 className='hallo'>{data?.hall.name}</h6>
+                    </div>
+                    <div className='col-lg-3 col-md-3 col-sm-12 loca'>
+                        <h4 className='hallside'>Tarix</h4>
+                        <h6 className='hallo'>{moment(data?.date).format("DD/MM/YYYY")}</h6>
+                    </div>
+                    <div className='col-lg-3 col-md-3 col-sm-12 loca'>
+                        <h4 className='hallside'>Qiymət</h4>
+                        <h6 className='hallo'>{data?.price} ₼</h6>
+                    </div>
+
+                </div>
+                <div className="row imha">
+                    <div className='col-lg-12 col-md-12 col-sm-12 poca'>
+                        <div className='roca'>
+                            <Form>
+                                <div className="hoca">
+                                    <div className='halna' >
+                                        <h4 className='halla'>{data?.name}</h4>
+                                    </div>
+                                    <div className='prico mt-2'>
+                                        <h6> Qiymət:</h6>
+                                        <h6>{data?.price} ₼</h6>
+                                    </div>
+                                    <div className='plusminus mt-2'>
+                                        <button className='minus'>-</button>
+                                        <Form.Control className='inpo' type="number" defaultValue={1} min={1} max={10} />
+                                        <button className='plus'>+</button>
+                                    </div>
+                                    <button className='subo mt-2' type='submit'>Əlavə Edin</button>
+                                </div>
+                            </Form>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div >
 

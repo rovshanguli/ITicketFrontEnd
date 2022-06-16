@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import '../src/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux'
+import {store} from './redux/store'
 import "react-image-gallery/styles/scss/image-gallery.scss";
 
 
@@ -14,9 +16,11 @@ import "react-image-gallery/styles/scss/image-gallery.scss";
 //   </React.StrictMode>
 // );
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
       <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

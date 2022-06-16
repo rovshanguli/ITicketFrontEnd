@@ -9,6 +9,7 @@ import moment from 'moment';
 function BorderTicket() {
 
     const [event, setEvent] = useState();
+    const [forrender,setForrender] = useState();
     let tickets = JSON.parse(localStorage.getItem('seats'));
     let token = localStorage.getItem('token');
 
@@ -104,6 +105,19 @@ function BorderTicket() {
         seats = []
     }
     console.log(user);
+    
+
+    // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
+  
+    function clearSeats(e) {
+        e.preventDefault()
+        localStorage.removeItem('seats')
+
+        localStorage.setItem('seats',JSON.stringify([]))
+        tickets = JSON.parse(localStorage.getItem('seats'));
+        setForrender('');
+        console.log(forrender);
+    }
     return (
         <div className='container'>
             <div className="row mt-5 ticketsonline">
@@ -130,7 +144,7 @@ function BorderTicket() {
                                             <div className='tickbuton'>
                                                 <b> {event?.price} ₼</b>
                                             </div>
-                                            <button className='delet'><i className="far fa-trash-alt"></i></button>
+                                            <button className='delet' onClick={(e) => clearSeats(e)}><i className="far fa-trash-alt"></i></button>
                                         </div>
                                     </div>
                                 </div>

@@ -17,6 +17,7 @@ function Filter(props) {
     const loadDatas = async () => {
         const result = await axios.get("https://localhost:44351/api/Hall/GetAllHalls")
         setItems(result.data)
+       
     }
 
     //Date Filter 
