@@ -1,0 +1,59 @@
+.logo{
+    width: 100px !important;
+    
+  
+}
+.css-2sptk0{
+  background-color: inherit !important;
+}
+
+.yellow::before{ 
+    position: absolute;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255,221,0,var(--tw-bg-opacity));
+    content: "";
+    top: 40px;
+    left: -158px;
+    width: 320px;
+    height: 204px;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px ;
+    
+    transform: rotate(-40deg);
+    transform-origin: 0 0;
+    z-index: -1;
+}
+.form-control:focus{
+    box-shadow: 0 0 0 0.25rem rgb(255 255 0 )
+  }
+
+.login{
+    line-height: 0.7rem;
+    width: 100%;
+}
+.regist{
+    line-height: 0.7rem;
+    width: 100%;
+}
+.nav-link::before{
+    transition: .5s;
+    color: inherit;
+    
+    
+}
+.nav-link:hover{
+    color: #ffee10;
+  box-shadow: 0 0 5px #ffee10;
+  text-shadow: 0 0 5px gray;
+}
+.container{
+    .Navbar{
+        position: absolute;
+        top: 100px;
+    }
+}
+
+.modal-size{
+    overflow: hidden;
+}
+

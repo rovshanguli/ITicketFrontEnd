@@ -1,0 +1,93 @@
+import { useState } from "react";
+import Filter from "../layout/Filter";
+import { Link } from 'react-router-dom';
+import "../../assets/sass/favorites.scss"
+import moment from 'moment';
+
+function Favorites() {
+
+    
+
+    const [visible, setVisible] = useState(3);
+    const [hallid, setHallId] = useState();
+    const [date, setDate] = useState('');
+    const [price, setPrice] = useState([0, 100]);
+    const [forrender,setForrender] = useState();
+
+    let startAndEnd = date.split('to');
+
+
+    const showMoreItems = () => {
+        setVisible((prevValue) => prevValue + 3)
+    }
+
+
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+
+    // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
+    let result = favorites;
+    if (hallid != null) {
+        result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
+    }
+
+    if (date.length !== 0) {
+        result = result.filter(item => moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(item.date).format('YYYY/MM/DD') && moment(startAndEnd[1]).format('YYYY/MM/DD') > moment(item.date).format('YYYY/MM/DD'))
+    }
+
+    if (price != null) {
+        result = result.filter(item => item.price > price[0] && item.price < price[1])
+    }
+
+    function clearFavorites(e) {
+        e.preventDefault()
+        localStorage.removeItem('favorites')
+
+        localStorage.setItem('favorites',JSON.stringify([]))
+        result = JSON.parse(localStorage.getItem('favorites'));
+        setForrender('');
+        console.log(forrender);
+    }
+    return (
+        <div className='container'>
+            <div className="d-flex justify-content-between">
+                <h3 className='mt-5'>Seçilmişlər</h3>
+                <button className="btn btn-outline-success cleare" onClick={(e) => clearFavorites(e)}>Təmizlə</button>
+            </div>
+            
+            <div className='mt-5'>
+                <Filter hallId={setHallId} date={setDate} setPrice={setPrice} getPrice={price} />
+            </div>
+            <div className='row '>
+
+
+                {result?.slice(0, visible).map(card =>
+                    <div className="col-4 mb-3" key={card.id}>
+                        <Link to={`/detail/${card.id}`} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
+                            <div className="relative h-full">
+                                <div className="image">
+                                    <img src={`data:image/jpeg;base64,${card.backImage}`} data-src={`data:image/jpeg;base64,${card.backImage}`} alt="" className="bg ls-is-cached lazyloaded" />
+                                    <img src={`data:image/jpeg;base64,${card.image}`} data-src={`data:image/jpeg;base64,${card.image}`} alt="" className=" ls-is-cached lazyloaded" />
+                                    <span className="btn"><span className="price">{card.price} ₼</span>-dan</span>
+                                </div>
+                                <div className="info">
+                                    <div className="event-name">
+                                        {card.name}
+                                    </div>
+                                    <div className="flex w-full items-center flex-1">
+                                        <div className="event-date">
+                                            {card.date.substring(0, 10)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                )}
+            </div>
+            <div className="load">   <button className="btn btn-primary loadmore mt-4" onClick={showMoreItems}>Load More</button></div>
+
+        </div>
+    )
+}
+
+export default Favorites

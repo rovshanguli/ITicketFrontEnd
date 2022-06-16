@@ -1,0 +1,391 @@
+.placearea{
+    .placeinput{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        outline: none;
+        border: none;
+
+        &:hover{
+            outline: none;
+            border: none;
+        }
+    }
+}
+
+
+.filter .venue-filter {
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+  }
+  .filter .date-range,
+  .filter .venue-filter {
+    border-radius: 30px;
+    line-height: 1.2 !important;
+  }
+  .hidden {
+    display: none;
+  }
+  button,
+  input,
+  select {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    padding: 0;
+    line-height: inherit;
+    color: inherit;
+  }
+  button,
+  select {
+    text-transform: none;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+  .filter .venue-filter {
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+  }
+  .filter .date-range,
+  .filter .venue-filter {
+    border-radius: 30px;
+    line-height: 1.2 !important;
+  }
+  .ts-wrapper {
+    position: relative;
+  }
+  .filter .ts-control,
+  .filter .ts-control input,
+  .filter .ts-dropdown {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+    line-height: 1.2 !important;
+  }
+  .filter .ts-control,
+  .ts-wrapper.single.input-active .ts-control {
+    background: transparent;
+  }
+  .filter .ts-control {
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    padding: 1rem 1.75rem;
+    border: 0;
+    border-radius: 30px;
+    box-shadow: 0 15px 38px rgb(0 0 0 / 10%);
+  }
+  .ts-control {
+    border: 1px solid #d0d0d0;
+    padding: 8px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    box-shadow: none;
+    border-radius: 3px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ts-control,
+  .ts-wrapper.single.input-active .ts-control {
+    background: #fff;
+    cursor: text;
+  }
+  .ts-control,
+  .ts-control input,
+  .ts-dropdown {
+    color: #303030;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    // font-smoothing: inherit;
+  }
+  .filter .ts-control,
+  .filter .ts-control input,
+  .filter .ts-dropdown {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+    line-height: 1.2 !important;
+  }
+  .filter .ts-control > input {
+    min-width: 0;
+  }
+  .ts-control > input {
+    flex: 1 1 auto;
+    min-width: 7rem;
+    display: inline-block !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    text-indent: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    line-height: inherit !important;
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    user-select: auto !important;
+    box-shadow: none !important;
+  }
+  .ts-control,
+  .ts-control input,
+  .ts-dropdown {
+    color: #303030;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    // font-smoothing: inherit;
+  }
+  .ts-control > * {
+    vertical-align: baseline;
+    display: inline-block;
+  }
+  button,
+  input,
+  select {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  button,
+  input,
+ 
+  select,
+  textarea {
+    padding: 0;
+    line-height: inherit;
+    color: inherit;
+  }
+  button,
+  input,
+ 
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+  .filter .ts-wrapper.single .ts-control:after {
+    position: absolute;
+    top: 50%;
+    right: 1.75rem;
+    display: block;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    content: "";
+  
+    background-size: contain;
+    height: 6px;
+    width: 12px;
+    margin-top: -3px;
+  }
+  .ts-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+    margin: 0.25rem 0 0;
+    border: 1px solid #d0d0d0;
+    border-top: 0;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    border-radius: 0 0 3px 3px;
+  }
+  .ts-control,
+  .ts-control input,
+  .ts-dropdown {
+    color: #303030;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    // font-smoothing: inherit;
+  }
+  .ts-dropdown-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 200px;
+    // overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  .ts-dropdown [data-selectable].option {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .filter .ts-dropdown .active,
+  .filter .ts-dropdown .create:hover,
+  .filter .ts-dropdown .option:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.05;
+  }
+  .filter .ts-dropdown .create,
+  .filter .ts-dropdown .no-results,
+  .filter .ts-dropdown .optgroup-header,
+  .filter .ts-dropdown .option {
+    padding: 0.75rem 1.75rem;
+  }
+  .ts-dropdown .active,
+  .ts-dropdown .create:hover,
+  .ts-dropdown .option:hover {
+    background-color: #f5fafd;
+    color: #495c68;
+  }
+  .ts-dropdown .option,
+  .ts-dropdown [data-disabled],
+  .ts-dropdown [data-disabled] [data-selectable].option {
+    cursor: inherit;
+    opacity: 0.5;
+  }
+  .ts-dropdown .create,
+  .ts-dropdown .no-results,
+  .ts-dropdown .optgroup-header,
+  .ts-dropdown .option {
+    padding: 5px 8px;
+  }
+  .ts-dropdown [data-selectable] {
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .filter .ts-wrapper.single .ts-control:after {
+    position: absolute;
+    top: 50%;
+    right: 1.75rem;
+    display: block;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    content: "";
+    background: url(
+      http://www.w3.org/2000/svg
+      )
+      no-repeat 50% 50%;
+    background-size: contain;
+    height: 6px;
+    width: 12px;
+    margin-top: -3px;
+  }
+  
+  .filter .date-range,
+  .filter .venue-filter {
+    border-radius: 30px;
+    line-height: 1.2 !important;
+  }
+  .filter .date-range {
+    width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    padding: 1rem 1.75rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+    box-shadow: 0 15px 38px rgb(0 0 0 / 10%);
+  }
+  .filter .price-range-input {
+    display: none;
+  }
+  button,
+  input,
+  select {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  select,
+  textarea {
+    padding: 0;
+    line-height: inherit;
+    color: inherit;
+  
+  }
+
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 20px;
+    line-height: 1;
+    margin: 0;
+   
+    width: 100%;
+  }
+  .filter .price-range-view {
+    width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    padding: 1rem 1.75rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(107, 114, 128, var(--tw-text-opacity));
+    border-radius: 30px;
+    box-shadow: 0 15px 38px rgb(0 0 0 / 10%);
+    line-height: 1.2 !important;
+    .place{
+      font-size: 25px !important;
+    }
+  }
+  .flatpickr-calendar.open, .flatpickr-calendar.inline {
+    opacity: 1;
+    max-height: 300px;
+    visibility: visible;
+}
+
+
+.MuiSlider-root{
+    color: rgb(255, 251, 0) !important;
+    top: -12px;
+    width: 100% !important;
+}
+ option{
+  width: 50%;
+  position: absolute;
+  height: 200px;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ }
